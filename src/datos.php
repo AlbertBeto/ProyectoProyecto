@@ -3,8 +3,8 @@ $proyectos = [
 		"clave" => "proyecto1",
 		"titulo" => "Título proyecto 1",
 		"descripcion" => "Descripción proyecto 1",
-		"imagen" => "static/images/proyecto1.jpg",
-		//"categoria" => [],
+		"imagen" => "static/images/proyecto1.jpg"//,
+		//"categorias" => []
 	],
 
 	[
@@ -12,7 +12,7 @@ $proyectos = [
 		"titulo" => "Título proyecto 2",
 		"descripcion" => "Descripción proyecto 2",
 		"imagen" => "static/images/proyecto1.jpg"
-		//"categoria" => [],
+		//"categorias" => []
 	],
 
 	[
@@ -20,7 +20,7 @@ $proyectos = [
 		"titulo" => "Título proyecto 3",
 		"descripcion" => "Descripción proyecto 3",
 		"imagen" => "static/images/proyecto1.jpg"
-		//"categoria" => [],
+		//"categorias" => []
 	],
 
 ];
