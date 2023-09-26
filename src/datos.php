@@ -1,3 +1,4 @@
+<?php
 $proyectos = [
 	[
 		"clave" => "proyecto1",
@@ -28,3 +29,4 @@ $proyectos = [
 $categorias = [
 	"php" => "PHP", "js" => "JavaScript", "py" => "Python", "mysql" => "MySQL"
 ];
+?>
