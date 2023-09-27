@@ -2,10 +2,14 @@
 <?php include("datos.php"); ?>
 <?php include("utiles.php"); ?>
 
-<?php $sort = $_GET['sort'];
-//El ISSET es para confirmar sort está lleno. 
-if(ISSET ($_GET['sort']) && $sort === "-1"){
-        usort($proyectos, 'ordenaTituloProyectoDesc');
+
+<?php 
+    // Importante recordar poner en el navegador al final de url el valor de sort
+    // Ejemplo----- http://localhost:8080/index.php?sort=-1
+    $sort = $_GET['sort'];
+    //El ISSET es para confirmar sort está lleno. 
+    if(ISSET ($_GET['sort']) && $sort === "-1"){
+        usort($proyectos,'ordenaTituloProyectoDesc');
 };
 ?>
 
