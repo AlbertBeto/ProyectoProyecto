@@ -24,7 +24,8 @@
 
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <a href="#" 
+                <!-- UD3.2.b Modifico el href para enlazarlo con la pagina Inicio que es index.php -->
+                <a href="index.php?sort=-1" 
                     class="nav-link
                         <?php if($_SERVER['SCRIPT_NAME']=="/index.php") { echo "active";}?> 
                         " 
@@ -38,7 +39,8 @@
                     </a>        
             </li>
             <li class="nav-item">
-            <a href="#" 
+                <!-- UD3.2.b Modifico el href para enlazarlo con la pagina Inicio que es contacto.php -->
+            <a href="contacto.php" 
                     class="nav-link
                         <?php if($_SERVER['SCRIPT_NAME']=="/contacto.php") { echo "active";}?> 
                         " 

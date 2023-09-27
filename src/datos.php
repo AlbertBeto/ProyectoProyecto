@@ -39,4 +39,7 @@ $proyectos = [
 $categorias = [
 	"php" => "PHP", "js" => "JavaScript", "py" => "Python", "mysql" => "MySQL"
 ];
+
+// UD3.2.c Creo variable para nombreApellidos para cliente. 
+$nombreApellidos = "Albert Pérez Baleyto";
 ?>

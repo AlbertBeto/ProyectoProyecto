@@ -1,4 +1,6 @@
 <?php include("templates/header.php"); ?>
+<!-- UD3.2.c.1 Hago un include en para dar acceso a datos en la pagina contacto -->
+<?php include("datos.php"); ?>
 <div class="container">
 <h2 class="mb-5">Contacto</h2>
 <div class="row">
@@ -6,7 +8,8 @@
 <img src="static/images/businessman.png" class="img-fluid rounded">
 </div>
 <div class="col-md">
-<h3>Nombre y apellidos</h3>
+    <!-- UD3.2.c.2 Hago que H3 saque la info de datos.php -->
+<h3><?php echo $nombreApellidos ?></h3>
 <p>Ciclo Superior DAW.</p>
 <p>Apasionado del mundo de la programación en general, y de las tecnologías web en
 particular.</p>
