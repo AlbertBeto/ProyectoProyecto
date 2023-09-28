@@ -28,7 +28,7 @@ $proyectos = [
 		"clave" => "proyecto2",
 		"titulo" => "Título proyecto 2",
 		"descripcion" => "Descripción proyecto 2",
-		"imagen" => "static/images/proyecto1.jpeg"
+		"imagen" => ""
 		//"categorias" => []
 	],
 

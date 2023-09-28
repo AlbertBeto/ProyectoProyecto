@@ -20,10 +20,8 @@
         <div class="col-sm-3">
             <a href="#" class="p-5">
                 <div class="card">
-                    <!-- Esta es la linea anterior del if <img class="card-img-top" src="<?php echo $proyecto['imagen']?>" alt="<?php echo $proyecto['titulo']?>"> -->
-                <img class="card-img-top" src="<?php echo 
-                <?php if ($proyecto['imagen']!=null){$proyecto['imagen']}else{'static/images/picture-not-available.jpg'}?>
-                " alt="<?php echo $proyecto['titulo']?>">
+                <!-- UD3.2.d Introduzco un php con un if por si no tiene dirección de imagen cargar imagen sinImagen -->
+                <img class="card-img-top" src=  <?php echo (empty($proyecto['imagen'])) ? 'static/images/picture-not-available.jpg':$proyecto['imagen'] ?> alt="<?php echo $proyecto['titulo']?>">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $proyecto['titulo']?></h5>
                         <p class="card-text"><?php echo $proyecto['descripcion']?></p>
