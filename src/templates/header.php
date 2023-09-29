@@ -1,3 +1,5 @@
+<?php include("datos.php"); ?>
+
 <!--DOCTYPE html -->
 <html>
 <head>
@@ -47,5 +49,17 @@
                         >CONTACTO
                 </a>
             </li>
+
+            <!-- 3.2.e Incluyo un IF en PHP que confirme el valor de loggedIn para poner un boton mas Admin -->
+            <?php  if ($loggedIn===True) { echo
+            "<li class='nav-item'>
+                <!-- UD3.2.e Lo tengo en # ya que todavia no va a ninguna parte. Y dejo # para el activo del boton.  -->
+                <a href='#' 
+                        class='nav-link' 
+                        >ADMINISTRACIÓN
+                </a>
+            </li>"; } 
+            ?>
+
         </ul>
     </header>
