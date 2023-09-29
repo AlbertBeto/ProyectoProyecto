@@ -10,12 +10,27 @@
     //El ISSET es para confirmar sort está lleno. 
     if(ISSET ($_GET['sort']) && $sort === "-1"){
         usort($proyectos,'ordenaTituloProyectoDesc');
-};
+} //Monto aquí un segundo get para confirmar que la web si tiene $sort 1 active funcion Ascendente
+elseif (ISSET ($_GET['sort']) && $sort === "1"){
+    usort($proyectos,'ordenaTituloProyectoAsc');
+}
+
+;
 ?>
 
+<!-- 3.2.f Monto dos botones para que carguen direcciones diferentes por el valor del sort. -->
+<div>      
+<button onclick="location.href='http://localhost:8080/index.php?sort=-1'" type="button">
+         Up</button>
 
+         <button onclick="location.href='http://localhost:8080/index.php?sort=1'" type="button">
+         Down</button>
+
+</div>
 <div class="container mb-5">
-    <div class="row">
+<br>  
+
+<div class="row">
     <?php foreach($proyectos as $proyecto): ?>
         <div class="col-sm-3">
             <a href="#" class="p-5">
