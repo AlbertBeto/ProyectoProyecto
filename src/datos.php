@@ -17,7 +17,7 @@ $proyectos = [
 		"descripcion" => "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.",
 		"imagen" => "static/images/trenza.jpg",
 		"categorias" => [],
-		"fecha" => "DD/MM/AAAA"
+		"fecha" => "04/08/1980"
 	],
 
 	[
@@ -26,7 +26,7 @@ $proyectos = [
 		"descripcion" => "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.",
 		"imagen" => "static/images/calamar.jpg",
 		"categorias" => [],
-		"fecha" => "DD/MM/AAAA"
+		"fecha" => "04/06/1970"
 	],
 
 	[
@@ -35,7 +35,7 @@ $proyectos = [
 		"descripcion" => "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.",
 		"imagen" => "static/images/tenis.jpg",
 		"categorias" => [],
-		"fecha" => "DD/MM/AAAA"
+		"fecha" => "04/02/1990"
 	],
 
 	[
@@ -44,7 +44,7 @@ $proyectos = [
 		"descripcion" => "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.",
 		"imagen" => "static/images/pirata.jpg",
 		"categorias" => [],
-		"fecha" => "DD/MM/AAAA"
+		"fecha" => "04/10/1960"
 	],
 	[
 		"clave" => "corso",
@@ -52,7 +52,7 @@ $proyectos = [
 		"descripcion" => "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.",
 		"imagen" => "static/images/pirata.jpg",
 		"categorias" => [],
-		"fecha" => "DD/MM/AAAA"
+		"fecha" => "04/10/1960"
 	],
 	[
 		"clave" => "corso",
@@ -60,7 +60,7 @@ $proyectos = [
 		"descripcion" => "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.",
 		"imagen" => "static/images/pirata.jpg",
 		"categorias" => [],
-		"fecha" => "DD/MM/AAAA"
+		"fecha" => "04/10/1960"
 	],
 
 ];

@@ -37,7 +37,7 @@ if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
 <br>  
 
 <div class="row">
-    <?php foreach($proyectos as $proyecto): ?>
+    <?php dateConversor($proyectos); foreach($proyectos as $proyecto): ?>
         <div class="col-sm-3">
             <!-- UD3.3.d Modifico el href del a para dirigirlo a la web del proyecto -->
             <a href="proyecto.php?id=<?php echo $proyecto['clave'] ?>" class="p-5">
@@ -47,10 +47,6 @@ if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $proyecto['titulo']?></h5>
                         <p class="card-text"><?php echo $proyecto['descripcion']?></p>
-                        <!--UD 3.5.X He creado una función para sacar el año de un date que era un string y no sabia donde usarlo...  -->
-                        <?php 
-                        echo anyoDateString($proyecto['fecha']); ?>
-                        <br>
                         <!--UD 3.3.c Creo un foreach para que repase los valores del array categorias, mire si existen en el array categorias main y en caso afirmativo imprime el valor de categoriasMain  -->
                         <?php
                         foreach($proyecto['categorias'] as $cat){

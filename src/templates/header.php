@@ -1,4 +1,4 @@
-<?php include("datos.php"); ?>;
+<?php include("datos.php"); ?>
 <!-- UD3.5.a Incluyo en el header, que es lo primero que se monta el include utiles.php y lo quito de index que es lo que se monta a continuación. -->
 <?php include("utiles.php"); ?>
 
