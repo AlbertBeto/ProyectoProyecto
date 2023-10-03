@@ -11,12 +11,15 @@ function ordenaTituloProyectoAsc($a, $b){
 return strcmp($b['titulo'],$a['titulo']);
 };
 
-//Esta función me la he inventado para nada... mentira la he aprovechado al fin como UD3.5.x
+//Esta función me la he inventado para nada... al final la he aprovechado al fin como UD3.5.x
 function anyoDateString($elstring){
     return date('Y',strtotime($elstring));
 };
 
-
+// 3.3.a Función que devuelve el año actual.
+function anyoActual(){
+    return date('Y');
+};
 
 
 ?>

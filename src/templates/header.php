@@ -1,4 +1,7 @@
-<?php include("datos.php"); ?>
+<?php include("datos.php"); ?>;
+<!-- UD3.5.a Incluyo en el header, que es lo primero que se monta el include utiles.php y lo quito de index que es lo que se monta a continuación. -->
+<?php include("utiles.php"); ?>
+
 
 <!--DOCTYPE html -->
 <html>
@@ -21,7 +24,8 @@
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-            <span class="fs-4">Portfolio</span>
+            <!-- UD3.5.a Concateno Portfolio con una funcion creada para sacar el año.  -->
+            <span class="fs-4">Portfolio <?php echo anyoActual(); ?></span>
         </a>
 
         <ul class="nav nav-pills">

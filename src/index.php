@@ -1,6 +1,6 @@
 <?php include("templates/header.php");?>
 <?php include("datos.php"); ?>
-<?php include("utiles.php"); ?>
+
 
 
 <?php 
