@@ -33,7 +33,8 @@ elseif (ISSET ($_GET['sort']) && $sort === "1"){
 <div class="row">
     <?php foreach($proyectos as $proyecto): ?>
         <div class="col-sm-3">
-            <a href="#" class="p-5">
+            <!-- UD3.3.d Modifico el href del a para dirigirlo a la web del proyecto -->
+            <a href="proyecto.php?id=<?php echo $proyecto['clave'] ?>" class="p-5">
                 <div class="card">
                 <!-- UD3.2.d Introduzco un php con un if por si no tiene dirección de imagen cargar imagen sinImagen -->
                 <img class="card-img-top" src=  <?php echo (empty($proyecto['imagen'])) ? 'static/images/picture-not-available.jpg':$proyecto['imagen'] ?> alt="<?php echo $proyecto['titulo']?>">
