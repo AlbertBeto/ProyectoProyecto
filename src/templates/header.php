@@ -34,11 +34,20 @@
                         >INICIO
                 </a>
             </li>
-            <li class="nav-item">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true">
-                        CATEGORÍAS
-                        <span class="caret"></span>
-                    </a>        
+            <!-- UD3.3.e Sustituyo el texto y creo un boton desplegable de las categorias del array $categoriasMain -->
+            <li class="nav-item" >
+                <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true">
+                    CATEGORÍAS
+                <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <!-- UD3.3.e Monto un foreach que recorre el array $categoriasMain y crea un link dentro del desplegable por cada campo -->   
+                <?php foreach ($categoriasMain as $cat){  ?>
+                    <a class="dropdown-item" href="#">
+                        <?php echo $cat ?>
+                    </a>
+                        <?php } ?>                
+                </div>
             </li>
             <li class="nav-item">
                 <!-- UD3.2.b Modifico el href para enlazarlo con la pagina Inicio que es contacto.php -->
