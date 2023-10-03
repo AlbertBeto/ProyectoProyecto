@@ -19,7 +19,7 @@
 if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
     array_pop($proyectos);
 }
-;
+
 
 
 ?>
