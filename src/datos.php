@@ -8,7 +8,7 @@ $proyectos = [
 		"descripcion" => "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.",
 		"imagen" => "static/images/comisaria.jpg",
 		"categorias" => ["php","py",],
-		"fecha" => "DD/MM/AAAA"
+		"fecha" => "04/07/1950"
 	],
 
 	[
@@ -38,6 +38,22 @@ $proyectos = [
 		"fecha" => "DD/MM/AAAA"
 	],
 
+	[
+		"clave" => "corso",
+		"titulo" => "Una de Piratas",
+		"descripcion" => "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.",
+		"imagen" => "static/images/pirata.jpg",
+		"categorias" => [],
+		"fecha" => "DD/MM/AAAA"
+	],
+	[
+		"clave" => "corso",
+		"titulo" => "Una de Piratas",
+		"descripcion" => "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.",
+		"imagen" => "static/images/pirata.jpg",
+		"categorias" => [],
+		"fecha" => "DD/MM/AAAA"
+	],
 	[
 		"clave" => "corso",
 		"titulo" => "Una de Piratas",

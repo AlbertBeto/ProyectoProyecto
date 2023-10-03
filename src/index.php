@@ -10,12 +10,18 @@
     //El ISSET es para confirmar sort está lleno. 
     if(ISSET ($_GET['sort']) && $sort === "-1"){
         usort($proyectos,'ordenaTituloProyectoDesc');
-} //Monto aquí un segundo get para confirmar que la web si tiene $sort 1 active funcion Ascendente
-elseif (ISSET ($_GET['sort']) && $sort === "1"){
-    usort($proyectos,'ordenaTituloProyectoAsc');
-}
+    } //Monto aquí un segundo get para confirmar que la web si tiene $sort 1 active funcion Ascendente
+    elseif (ISSET ($_GET['sort']) && $sort === "1"){
+        usort($proyectos,'ordenaTituloProyectoAsc');
+    };
 
+// UD3.3.h Creo un php que comprueba si está el parametro delete y si es true borra el la última entrada del array proyectos. 
+if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
+    array_pop($proyectos);
+}
 ;
+
+
 ?>
 
 <!-- 3.2.f Monto dos botones para que carguen direcciones diferentes por el valor del sort. -->
@@ -41,8 +47,13 @@ elseif (ISSET ($_GET['sort']) && $sort === "1"){
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $proyecto['titulo']?></h5>
                         <p class="card-text"><?php echo $proyecto['descripcion']?></p>
+                        <!--UD 3.5.X He creado una función para sacar el año de un date que era un string y no sabia donde usarlo...  -->
+                        <?php 
+                        echo anyoDateString($proyecto['fecha']); ?>
+                        <br>
                         <!--UD 3.3.c Creo un foreach para que repase los valores del array categorias, mire si existen en el array categorias main y en caso afirmativo imprime el valor de categoriasMain  -->
-                        <?php foreach($proyecto['categorias'] as $cat){
+                        <?php
+                        foreach($proyecto['categorias'] as $cat){
                                 if(array_key_exists($cat,$categoriasMain)){
                                 echo $categoriasMain[$cat]." ";
                                 }

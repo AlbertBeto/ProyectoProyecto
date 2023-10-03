@@ -9,4 +9,15 @@ return strcmp($b['titulo'],$a['titulo']);
 
 function ordenaTituloProyectoAsc($a, $b){
 return strcmp($b['titulo'],$a['titulo']);
-} ?>
+};
+
+//Esta función me la he inventado para nada... mentira la he aprovechado al fin como UD3.5.x
+function anyoDateString($elstring){
+    return date('Y',strtotime($elstring));
+};
+
+
+
+
+?>
+
