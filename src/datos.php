@@ -7,7 +7,7 @@ $proyectos = [
 		"titulo" => "Comisaria social",
 		"descripcion" => "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.",
 		"imagen" => "static/images/comisaria.jpg",
-		"categorias" => [],
+		"categorias" => ["php","py",],
 		"fecha" => "DD/MM/AAAA"
 	],
 
@@ -49,7 +49,7 @@ $proyectos = [
 
 ];
 
-$categorias = [
+$categoriasMain = [
 	"php" => "PHP", "js" => "JavaScript", "py" => "Python", "mysql" => "MySQL"
 ];
 

@@ -16,6 +16,13 @@
             <div class="col-sm">
                 Descripción
             </div>
+              <!--UD 3.3.c Creo un foreach para que repase los valores del array categorias, mire si existen en el array categorias main y en caso afirmativo imprime el valor de categoriasMain  -->
+            <?php foreach($proyecto['categorias'] as $cat){
+                                if(array_key_exists($cat,$categoriasMain)){
+                                echo $categoriasMain[$cat]." ";
+                                }
+                            } 
+                        ?>   
         </div>
     </div>
 <?php include("templates/footer.php"); ?>
