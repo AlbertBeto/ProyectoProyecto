@@ -46,6 +46,17 @@
                         <?php } ?>                
                 </div>
             </li>
+
+            <li class="nav-item">
+                <!--  -->
+            <a href="sobremi.php" 
+                    class="nav-link
+                        <?php if($_SERVER['SCRIPT_NAME']=="/sobremi.php") { echo "active";}?> 
+                        " 
+                        >SOBRE MÍ
+                </a>
+            </li>
+
             <li class="nav-item">
                 <!-- UD3.2.b Modifico el href para enlazarlo con la pagina Inicio que es contacto.php -->
             <a href="contacto.php" 
