@@ -17,7 +17,7 @@ function ordenaTituloProyectoAsc($a, $b){
 return strcmp($b['titulo'],$a['titulo']);
 };
 
-//
+/*
 function probandoElConversor(){
     include("datos.php");
     foreach($proyectos as $proyecto){
@@ -25,7 +25,7 @@ function probandoElConversor(){
             return $proyecto["fecha"];          
         }
     }
-};
+};*/
 
 // UD3.5.a Función que devuelve el año actual.
 function anyoActual(){
@@ -33,10 +33,10 @@ function anyoActual(){
 };
 
 // UD3.5.b Creo una funcion que se le dá el array principal y cambia el campo fecha de string a date. 
+// Utilizo el & para modificar la variable original o en este caso el array. 
 function dateConversor(&$arrayOriginal){
         foreach($arrayOriginal as &$proyecto){
         if(is_string($proyecto["fecha"])){
-            
             $proyecto["fecha"]=date('d/m/Y',strtotime($proyecto["fecha"]));
            }
         } 
