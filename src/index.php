@@ -14,6 +14,7 @@
     elseif (ISSET ($_GET['sort']) && $sort === "1"){
         usort($proyectos,'ordenaTituloProyectoAsc');
     };
+    
 
 // UD3.3.h Creo un php que comprueba si está el parametro delete y si es true borra el la última entrada del array proyectos. 
 if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
