@@ -35,6 +35,19 @@
             } else {
             $tipo = $_POST["tipo"];
         }
+        //Este no confirma si no que solo almacena el campo si da error
+        if (!empty($_POST["mensaje"])){
+            $mensaje = test_input($_POST["mensaje"]);
+        }
+        //Esto es lo de subir archivos
+        if (!empty($_FILES['archivo'])) {
+            $nombreArchivo = $_FILES['archivo']['name'];
+            move_uploaded_file($_FILES['archivo']['tmp_name'], "/var/www/html/uploads/{$nombreArchivo}");
+            if ($nombreArchivo){
+            $pathArchivo = "uploads/{$nombreArchivo}";
+            }
+            }
+
     }
 ?>
 
@@ -42,7 +55,7 @@
 <h2 class="mb-5">Contacto</h2>
 <div class="row">
 
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data">
 <div class="mb-3 col-sm-6 p-0">
     <div class="row">
         <label for="nombreApellidosID" class="form-label">Nombre y apellidos</label>
@@ -86,6 +99,23 @@ Empresa
 </div>
 <span class="text-danger"> <?php echo $tipoErr ?> </span>
 </div>
+
+<!-- Lo siguiente es el campo descripcion-->
+<div class="row mb-4">
+<label for="areaTexto" class="form-label">Mensaje</label>
+<textarea class="form-control" name="mensaje" id="areaTexto" rows="3" placeholder="Escriba su
+mensaje..."><?php print $mensaje;?>
+</textarea>
+
+</div>
+
+<!-- Esto es la parte del archivo para subir  -->
+<div class="row mb-4">
+<label for="archivoID" class="form-label">Adjuntar archivo</label>
+<input class="form-control" type="file" id="archivoID" name="archivo">
+</div>
+<span class="text-danger"> <?php echo $archivoErr ?> </span>
+<br>
 
 <button type="submit" class="btn btn-success">Enviar</button>
 </form>
