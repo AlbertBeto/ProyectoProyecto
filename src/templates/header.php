@@ -49,9 +49,9 @@
 
             <li class="nav-item">
                 <!--  -->
-            <a href="sobremi.php" 
+            <a href="sobre_mi.php" 
                     class="nav-link
-                        <?php if($_SERVER['SCRIPT_NAME']=="/sobremi.php") { echo "active";}?> 
+                        <?php if($_SERVER['SCRIPT_NAME']=="/sobre_mi.php") { echo "active";}?> 
                         " 
                         >SOBRE MÍ
                 </a>
