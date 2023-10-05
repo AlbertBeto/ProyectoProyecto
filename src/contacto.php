@@ -117,6 +117,7 @@ mensaje..."><?php print $mensaje;?>
 <span class="text-danger"> <?php echo $archivoErr ?> </span>
 <br>
 
+
 <button type="submit" class="btn btn-success">Enviar</button>
 </form>
 
