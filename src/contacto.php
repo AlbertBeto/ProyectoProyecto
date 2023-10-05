@@ -21,7 +21,7 @@
                 [\]\.,;:\s@\”]{2,})$/",$email)) {
                 $emailErr = "Introduzca un e-mail válido.";
             }
-            }
+        }
         if (empty($_POST["telefono"])) {
             $telefonoErr = "Por favor, introduzca su telefono.";
         } else {
@@ -29,7 +29,12 @@
                 if (!preg_match("/^[9|6]{1}([\d]{2}[-]*){3}[\d]{2}$/",$telefono)) {
                 $telefonoErr = "Introduzca un telefono válido.";
             }
-            }
+        }
+        if (empty($_POST["tipo"])) {
+            $tipoErr = "Por favor, introduzca el tipo de consulta.";
+            } else {
+            $tipo = $_POST["tipo"];
+        }
     }
 ?>
 
@@ -64,9 +69,27 @@
         <span class="text-danger"> <?php echo $telefonoErr ?> </span>
     </div>
 </div>
+<!-- Esto son las dos casillas de selccion de empresa o privado.  -->
+<div class="row mb-4">
+<div class="form-check">
+<input class="form-check-input" type="radio" name="tipo" id="particularID" value="particular" <?php if (isset($tipo) && $tipo=="particular") echo "checked";?>>
+<label class="form-check-label" for="particularID">
+Particular
+</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" type="radio" name="tipo" id="empresaID" value="empresa" <?php
+if (isset($tipo) && $tipo=="empresa") echo "checked";?>>
+<label class="form-check-label" for="empresaID">
+Empresa
+</label>
+</div>
+<span class="text-danger"> <?php echo $tipoErr ?> </span>
+</div>
 
 <button type="submit" class="btn btn-success">Enviar</button>
 </form>
+
 
 
 
