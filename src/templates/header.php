@@ -71,9 +71,9 @@
             <?php  if ($loggedIn===True) { ?>
             <li class='nav-item'>
                 <!-- UD3.2.e Lo tengo en # ya que todavia no va a ninguna parte. Y dejo adminXXXXX para el activo del boton.  -->
-                <a href='#' 
+                <a href='contacto_lista.php' 
                         class='nav-link
-                        <?php if($_SERVER['SCRIPT_NAME']=="adminXXXXX") { echo "active";}?>
+                        <?php if($_SERVER['SCRIPT_NAME']=="contacto_lista.php") { echo "active";}?>
                         ' 
                         >ADMINISTRACIÓN
                 </a>
