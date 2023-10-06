@@ -2,8 +2,14 @@
 
 
 <?php
-    $nameErr = "";
+    $nameErr = $emailErr = $telefonoErr = $tipoErr = $archivoErr = "";
+    $name = $email = $telefono = $tipo = $mensaje = "";
+    $pathArchivo = $nombreArchivo = "";
+     
+     
+     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
         if (empty($_POST["nombreApellidos"])) {
             $nameErr = "Por favor, introduzca nombre y apellidos";
         }else {
@@ -51,7 +57,7 @@
         // Introducimos código que repasa todas las variables de error y confirma que esten vacias
         //para luego cfear un array sociativa con los valores de los formularios
 
-        if ($nameErr === "" && $emailErr === "" && $phoneErr === "" && $tipoErr === ""){
+        if ($nameErr === "" && $emailErr === "" && $telefonoErr === "" && $tipoErr === ""){
             $contacto = [
             "name" => $name,
             "email" => $email,
@@ -63,7 +69,7 @@
 
             //Aqui cargamos el json del archivo en el array temporal .
             $tempArray = json_decode(file_get_contents('mysql/contactos.json'));
-        // Haceemos un if que si el array esta vacio lo crea con un array.
+        // Hacemos un if que si el array esta vacio lo crea con un array.
             if ($tempArray === NULL){
                      $tempArray = [];
                 }
@@ -72,11 +78,20 @@
             $contactos_json = json_encode($tempArray);
             //Aqui guarda el nuevo array otra vez en el archivo
             file_put_contents('mysql/contactos.json', $contactos_json);
+            
+            ?>
+
+        <script type="text/javascript">
+        window.location = "/confirma_contacto.php";
+        </script>
+<?php
+
         }
 
     //Esta llave es la del request mode server.
     }
 ?>
+
 
 <div class="container">
 <h2 class="mb-5">Contacto</h2>
