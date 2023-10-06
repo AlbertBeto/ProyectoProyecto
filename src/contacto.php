@@ -58,11 +58,11 @@
         // Introducimos código que repasa todas las variables de error y confirma que esten vacias
         //para luego cfear un array sociativa con los valores de los formularios
 
-        if ($nameErr === "" && $emailErr === "" && $telefonoErr === "" && $tipoErr === ""){
+        if ($nameErr === "" && $emailErr === "" && $telefonoErr === "" && $tipoErr === "") {
             $contacto = [
             "name" => $name,
             "email" => $email,
-            "phone" => $phone,
+            "telefono" => $telefono,
             "tipo" => $tipo,
             "mensaje" => $mensaje,
             "file" => $pathArchivo,
@@ -74,6 +74,8 @@
             if ($tempArray === NULL){
                      $tempArray = [];
                 }
+                
+                $contacto['id'] = count($tempArray) + 1;
                 //Aqui monta el array con el nuevo contacto
             array_push($tempArray, $contacto);
             $contactos_json = json_encode($tempArray);

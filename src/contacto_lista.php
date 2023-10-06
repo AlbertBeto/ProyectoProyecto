@@ -14,8 +14,8 @@
     <?php } else { ?>
         <div class="list-group">
             <?php foreach ($contactosLista as $contacto): ?>
-            <a href="#" class="list-group-item list-group-item-action"><?php echo $contacto['email'] ?> -
-            <?php echo $contacto['phone'] ?></a>
+            <a href="contacto_detalle.php?id=<?php echo $contacto['id'] ?>" class="list-group-item list-group-item-action"><?php echo $contacto['email'] ?> -
+            <?php echo $contacto['telefono'] ?></a>
             <?php endforeach; ?>
         </div>
     <?php } ?>
