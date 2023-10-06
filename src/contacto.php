@@ -2,6 +2,7 @@
 
 
 <?php
+//importante inicializar todas las variables a vacio. 
     $nameErr = $emailErr = $telefonoErr = $tipoErr = $archivoErr = "";
     $name = $email = $telefono = $tipo = $mensaje = "";
     $pathArchivo = $nombreArchivo = "";
@@ -81,6 +82,8 @@
             
             ?>
 
+            <!-- Si todo es correcto sale del minibucle del php realiza el salto de web a la pagina
+        de confirmación y acaba de cerrarlo todo.  -->
         <script type="text/javascript">
         window.location = "/confirma_contacto.php";
         </script>
