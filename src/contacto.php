@@ -48,6 +48,33 @@
             }
             }
 
+        // Introducimos código que repasa todas las variables de error y confirma que esten vacias
+        //para luego cfear un array sociativa con los valores de los formularios
+
+        if ($nameErr === "" && $emailErr === "" && $phoneErr === "" && $tipoErr === ""){
+            $contacto = [
+            "name" => $name,
+            "email" => $email,
+            "phone" => $phone,
+            "tipo" => $tipo,
+            "mensaje" => $mensaje,
+            "file" => $pathArchivo,
+            ];
+
+            //Aqui cargamos el json del archivo en el array temporal .
+            $tempArray = json_decode(file_get_contents('mysql/contactos.json'));
+        // Haceemos un if que si el array esta vacio lo crea con un array.
+            if ($tempArray === NULL){
+                     $tempArray = [];
+                }
+                //Aqui monta el array con el nuevo contacto
+            array_push($tempArray, $contacto);
+            $contactos_json = json_encode($tempArray);
+            //Aqui guarda el nuevo array otra vez en el archivo
+            file_put_contents('mysql/contactos.json', $contactos_json);
+        }
+
+    //Esta llave es la del request mode server.
     }
 ?>
 
