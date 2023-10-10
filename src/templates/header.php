@@ -67,7 +67,7 @@
                 </a>
             </li>
 
-            <!-- 3.2.e Incluyo un IF en PHP que confirme el valor de loggedIn para poner un boton mas Admin -->
+            <!-- UD3.2.e Incluyo un IF en PHP que confirme el valor de loggedIn para poner un boton mas Admin -->
             <?php  if ($loggedIn===True) { ?>
             <li class='nav-item'>
                 <!-- UD3.2.e Lo tengo en # ya que todavia no va a ninguna parte. Y dejo adminXXXXX para el activo del boton.  -->
@@ -76,6 +76,19 @@
                         <?php if($_SERVER['SCRIPT_NAME']=="contacto_lista.php") { echo "active";}?>
                         ' 
                         >ADMINISTRACIÓN
+                </a>
+            </li> 
+            <?php } ?>
+
+            <!-- 4.1.e Creo un nuevo boton en el menu para LOGIN. Hago que sea visible si no esta logeado -->
+            <?php  if ($loggedIn===false) { ?>
+            <li class='nav-item'>
+                <!-- 4.1.e Creo boton y lo direccion a la pagina login.php  -->
+                <a href='login.php' 
+                        class='nav-link
+                        <?php if($_SERVER['SCRIPT_NAME']=="login.php") { echo "active";}?>
+                        ' 
+                        >Login
                 </a>
             </li> 
             <?php } ?>
