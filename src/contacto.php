@@ -56,7 +56,7 @@
             }
 
         // Introducimos código que repasa todas las variables de error y confirma que esten vacias
-        //para luego cfear un array sociativa con los valores de los formularios
+        //para luego crear un array sociativa con los valores de los formularios
 
         if ($nameErr === "" && $emailErr === "" && $telefonoErr === "" && $tipoErr === "") {
             $contacto = [

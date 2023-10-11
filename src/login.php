@@ -32,7 +32,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 }
 
-?>
+
+
+if ($emailErr === "" && $passwordErr === "") {
+            $loger = [
+            "email" => $email,
+            "password" => $password,
+            ];
+
+            //Aqui cargamos el json del archivo en el array temporal .
+            $tempArray = json_decode(file_get_contents('mysql/usuario.json'), true);
+
+            if ($tempArray === NULL){
+                $tempArray = [];
+           }
+           
+           foreach ($tempArray as $user){
+            if($user["email"]==$loger[$email] && $user["password"]==$loger[$password]){ ?>
+                <script type="text/javascript">
+                     window.location = "/contacto_lista.php";
+                </script>
+                <?php
+            }
+           }
+
+        }
+            ?>
+
 
 <!-- UD4 4.1.a Aquí creo los formularios y el boton de enviar.
 Con PHP hago que se repita el texto introducido en caso de error.
