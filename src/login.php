@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }else {
         $password = test_input($_POST["password"]);
         //Expresion regular para password minimo 8 caracteres y al menos un número y una letra.
-        if (!preg_match("^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$",$password)) {
+        if (!preg_match('/^[a-zA-Z]\w{3,14}$/',$password)) {
             $passwordErr = "Error. Minimo 8 caracteres con al menos una letra y un número.";
         }
         }
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="mb-3 col-sm-6 p-0">
                 <div class="row">
                     <label for="emailID" class="form-label">Email</label>
-                    <input type="text" name="email" value="<?php echo $name;?>" class="form-control" id="emailID"
+                    <input type="text" name="email" value="<?php echo $email;?>" class="form-control" id="emailID"
                     placeholder="Introduzca su email" >
                     <span class="text-danger"> <?php echo $emailErr ?> </span>
                 </div>
