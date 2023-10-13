@@ -80,10 +80,10 @@
             </li> 
             <?php } ?>
 
-            <!-- 4.1.e Creo un nuevo boton en el menu para LOGIN. Hago que sea visible si no esta logeado -->
+            <!-- 4.1.a Creo un nuevo boton en el menu para LOGIN. Hago que sea visible si no esta logeado -->
             <?php  if ($loggedIn===false) { ?>
             <li class='nav-item'>
-                <!-- 4.1.e Creo boton y lo direccion a la pagina login.php  -->
+                <!-- 4.1.a Creo boton y lo direccion a la pagina login.php  -->
                 <a href='login.php' 
                         class='nav-link
                         <?php if($_SERVER['SCRIPT_NAME']=="login.php") { echo "active";}?>
