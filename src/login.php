@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emailErr = "Por favor, introduzca su e-mail.";
     } else {
             $email = test_input($_POST["email"]);
+            //Expresion regular para chequear ue lo introducido sea un email.
             if (!preg_match("/^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()
             [\]\.,;:\s@\”]{2,})$/",$email)) {
             $emailErr = "Introduzca un e-mail válido.";
