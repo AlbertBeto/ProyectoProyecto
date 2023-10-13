@@ -48,7 +48,7 @@ if ($emailErr === "" && $passwordErr === "") {
            }
            
            foreach ($tempArray as $user){
-            if($user["email"]==$loger[$email] && $user["password"]==$loger[$password]){ ?>
+            if($user["email"]==$loger["email"] && $user["password"]==$loger["password"]){ ?>
                 <script type="text/javascript">
                      window.location = "/contacto_lista.php";
                 </script>
