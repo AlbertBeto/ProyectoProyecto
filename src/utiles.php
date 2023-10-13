@@ -1,4 +1,4 @@
-<?php include("datos.php"); ?>;
+<?php include("datos.php"); ?>
 
 
 <?php 
