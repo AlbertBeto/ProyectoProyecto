@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $emailErr = "Introduzca un e-mail válido.";
         }
     }
+    
 
 
     if (empty($_POST["password"])) {
