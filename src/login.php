@@ -55,20 +55,28 @@ if ($emailErr === "" && $passwordErr === "") {
            foreach ($tempArray as $user){
             if($user["email"]===$loger["email"]){ 
                 if($user["password"]===$loger["password"]){
+                    // RA4.c 4.1.f Si todo es correcto creamos la cookie con variables para futuras mods
+                    // y luego saltamos a la nueva web
+                    $cookie_name = "user_email";
+                    $cookie_value = $loger ["email"];
+                    setcookie($cookie_name,$cookie_value, time()+(86400*30), "/");
                     ?>
             <!-- UD4 4.1.c Si es confirmado de momento cargamos la pagina contacto_lista.php -->
                 <script type="text/javascript">
                      window.location = "/contacto_lista.php";
                 </script>
                 <?php
-                //UD4 4.1.d auí si el password no es correcto hacemos salir el error rojo
+                //UD4 4.1.d aquí si el password no es correcto hacemos salir el error rojo
+                // y ponemos el break para salir del buble y que no salga el error rojo 
+                // con los siguientes users del array. 
                 }else{
                     $passwordErr = "El password introducido es erroneo.";
+                    break;
                 }
                 
                 // UD4 4.1.d Aquí comprobamos si está la etiqueta vacia para 
                 //evitar el salte el error al estar vacio.
-            } elseif($loger["email"]=='' ){
+            } elseif($loger["email"]==''){
                 $emailErr = '';
                // UD4 4.1.d Y aquí damos el error si no es está correcto y no está vacio. 
             }else{
