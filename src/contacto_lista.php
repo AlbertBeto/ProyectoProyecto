@@ -1,4 +1,6 @@
-<?php include("templates/header.php"); ?>
+<?php 
+ 
+include("templates/header.php"); ?>
 
 <?php
     $contactosLista = json_decode(file_get_contents('mysql/contactos.json'), true);

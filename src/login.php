@@ -8,6 +8,8 @@ Y muy importante los meto en los campos post creados -->
 <?php
 $email = $password = '';
 $emailErr = $passwordErr = '';
+$cookie_name = "";
+$cookie_value = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -55,17 +57,17 @@ if ($emailErr === "" && $passwordErr === "") {
            foreach ($tempArray as $user){
             if($user["email"]===$loger["email"]){ 
                 if($user["password"]===$loger["password"]){
-                    // RA4.c 4.1.f Si todo es correcto creamos la cookie con variables para futuras mods
+                    // RA4.c 4.1.e Si todo es correcto modificamos la cookie con el valor del email
                     // y luego saltamos a la nueva web
-                    $cookie_name = "user_email";
-                    $cookie_value = $loger ["email"];
-                    setcookie($cookie_name,$cookie_value, time()+(86400*30), "/");
+                   setcookie("user_email",$loger["email"], time()+(86400*30), "/");
+                                      
                     ?>
             <!-- UD4 4.1.c Si es confirmado de momento cargamos la pagina contacto_lista.php -->
                 <script type="text/javascript">
                      window.location = "/contacto_lista.php";
                 </script>
                 <?php
+                
                 //UD4 4.1.d aquí si el password no es correcto hacemos salir el error rojo
                 // y ponemos el break para salir del buble y que no salga el error rojo 
                 // con los siguientes users del array. 
