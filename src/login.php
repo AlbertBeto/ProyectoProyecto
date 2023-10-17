@@ -9,6 +9,7 @@ Y muy importante los meto en los campos post creados -->
 $email = $password = '';
 $emailErr = $passwordErr = '';
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($_POST["email"])) {
