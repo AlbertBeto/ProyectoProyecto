@@ -8,7 +8,8 @@ Y muy importante los meto en los campos post creados -->
 <?php
 $email = $password = '';
 $emailErr = $passwordErr = '';
-
+$cookie_name = "";
+$cookie_value = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -52,33 +53,42 @@ if ($emailErr === "" && $passwordErr === "") {
                 $tempArray = [];
            }
            //Aqui hacemos la comparativa con un foreach del array creado con el json.
-           //Cada user lo comprobamos con el email recibido y comprobamos el pass tambien. 
+           // 4.1.c Cada user lo comprobamos con el email recibido y comprobamos el pass tambien. 
            foreach ($tempArray as $user){
-            if($user["email"]==$loger["email"]){ 
-                if($user["password"]==$loger["password"]){
+            if($user["email"]===$loger["email"]){ 
+                if($user["password"]===$loger["password"]){
+                    // RA4.c 4.1.e Si todo es correcto modificamos la cookie con el valor del email
+                    // y luego saltamos a la nueva web
+                   setcookie("user_email",$loger["email"], time()+(86400*30), "/");
+                                      
                     ?>
             <!-- UD4 4.1.c Si es confirmado de momento cargamos la pagina contacto_lista.php -->
                 <script type="text/javascript">
                      window.location = "/contacto_lista.php";
                 </script>
                 <?php
-                //Este es el cierre del if del password
+                
+                //UD4 4.1.d aquí si el password no es correcto hacemos salir el error rojo
+                // y ponemos el break para salir del buble y que no salga el error rojo 
+                // con los siguientes users del array. 
                 }else{
-                    ?>
-                    <!-- prueba para error -->
-                        <script type="text/javascript">
-                             window.location = "/sobre_mi.php";
-                        </script>
-                        <?php
+                    $passwordErr = "El password introducido es erroneo.";
+                    break;
                 }
                 
-                //Esta es la llave del primer if de confirmación y aquí debe ir el error de email.
-            }else{}
+                // UD4 4.1.d Aquí comprobamos si está la etiqueta vacia para 
+                //evitar el salte el error al estar vacio.
+            } elseif($loger["email"]==''){
+                $emailErr = '';
+               // UD4 4.1.d Y aquí damos el error si no es está correcto y no está vacio. 
+            }else{
+                $emailErr = "El usuario introducido es erroneo.";
+                 }
             //Esta es la llave del foreach
            }
-        //Esta es la llave del if principal de los errores. 
-        }
-            ?>
+//Esta es la llave del if principal de los errores. 
+}
+    ?>
 
 
 <!-- UD4 4.1 Aquí creo los formularios y el boton de enviar.
@@ -94,6 +104,7 @@ Y en caso de error sale en texto rojo el mensaje de error. -->
                     <label for="emailID" class="form-label">Email</label>
                     <input type="text" name="email" value="<?php echo $email;?>" class="form-control" id="emailID"
                     placeholder="Introduzca su email" >
+                    <!-- UD4 4.1.d La etiqueta de aviso de errores usuario -->
                     <span class="text-danger"> <?php echo $emailErr ?> </span>
                 </div>
             </div>
@@ -102,6 +113,7 @@ Y en caso de error sale en texto rojo el mensaje de error. -->
                     <label for="passwordID" class="form-label">Password</label>
                     <input type="password" name="password" value="<?php echo $password;?>" class="form-control"
                     id="passwordID" placeholder="Su password">
+                    <!-- UD4 4.1.d La etiqueta de aviso de errores password -->
                     <span class="text-danger"> <?php echo $passwordErr ?> </span>
                 </div>
             </div>

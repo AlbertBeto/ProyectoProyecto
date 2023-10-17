@@ -1,7 +1,14 @@
+<?php include("datos.php");include("utiles.php");
+// RA4.c 4.1.e Comprobamos si la cookie ha sido creada, en caso q no
+// la creamos con valor false. 
+if(!isset($_COOKIE["user_email"])){
+setcookie("user_email",0, time()+(86400*30), "/"); }
+?>
 <!DOCTYPE html>
+
 <html>
 <!--UD3.5.a Incluyo en el header, que es lo primero que se monta el include utiles.php y lo quito de index que es lo que se monta a continuación.-->
-<?php include("datos.php");include("utiles.php");?>
+
 <head>
     <title>Portfolio de proyectos</title>
     <meta charset="utf-8">
@@ -67,8 +74,8 @@
                 </a>
             </li>
 
-            <!-- UD3.2.e Incluyo un IF en PHP que confirme el valor de loggedIn para poner un boton mas Admin -->
-            <?php  if ($loggedIn===True) { ?>
+            <!-- RA4.c 4.1.e Si el valor de la cookie no es false es visible-->
+            <?php  if ($_COOKIE["user_email"]!==0) { ?>
             <li class='nav-item'>
                 <!-- UD3.2.e Lo tengo en # ya que todavia no va a ninguna parte. Y dejo adminXXXXX para el activo del boton.  -->
                 <a href='contacto_lista.php' 
@@ -80,15 +87,27 @@
             </li> 
             <?php } ?>
 
-            <!-- 4.1.a Creo un nuevo boton en el menu para LOGIN. Hago que sea visible si no esta logeado -->
-            <?php  if ($loggedIn===false) { ?>
+            <!-- RA4.c 4.1.e Si el valor de la cookie es false es visible-->
+            <?php  if ($_COOKIE["user_email"]===0) { ?>
             <li class='nav-item'>
                 <!-- 4.1.a Creo boton y lo direccion a la pagina login.php  -->
                 <a href='login.php' 
                         class='nav-link
                         <?php if($_SERVER['SCRIPT_NAME']=="login.php") { echo "active";}?>
                         ' 
-                        >Login
+                        >LOG IN
+                </a>
+            </li> 
+            <?php } ?>
+            <!-- RA4.c 4.1.e Si el valor de la cookie no es false es visible-->
+            <?php  if ($_COOKIE["user_email"]!==0) { ?>
+            <li class='nav-item'>
+                <!-- 4.1.a Creo boton y lo direccion a la pagina login.php  -->
+                <a href="logout.php"
+                        class='nav-link
+                        <?php if($_SERVER['SCRIPT_NAME']=="login.php") { echo "active";}?>
+                        ' 
+                        >LOG OUT
                 </a>
             </li> 
             <?php } ?>
