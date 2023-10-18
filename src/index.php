@@ -24,16 +24,23 @@ if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
 
 
 ?>
-
+<div>
+    <!--UD4 4.2.a RA3.e  Creo un boton en index que lleve a la página formulario_proyectos-->    
+<button onclick="location.href='formulario_proyectos.php'" type="button">
+         Crear proyecto</button>
+</div>     
 <!-- 3.2.f Monto dos botones para que carguen direcciones diferentes por el valor del sort. -->
-<div>      
+<div> 
+<br>     
 <button onclick="location.href='http://localhost:8080/index.php?sort=-1'" type="button">
          Up</button>
 
          <button onclick="location.href='http://localhost:8080/index.php?sort=1'" type="button">
          Down</button>
-
+         <br>
 </div>
+
+
 <div class="container mb-5">
 <br>  
 
