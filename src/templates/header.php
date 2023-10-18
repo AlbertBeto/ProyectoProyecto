@@ -1,4 +1,4 @@
-<?php include("datos.php");include("utiles.php");
+<?php include_once("datos.php");include_once("utiles.php");
 // RA4.c 4.1.e Comprobamos si la cookie ha sido creada, en caso q no
 // la creamos con valor false. 
 /*
@@ -75,7 +75,7 @@ setcookie("user_email",1, time()+(86400*30), "/");
                 </a>
             </li>
 
-            <!-- RA4.c 4.1.e Si el valor de la cookie no es false es visible-->
+            <!-- RA4.c 4.1.f Si la cookie existe es visible-->
             <?php  if (isset($_COOKIE["user_email"])) { ?>
             <li class='nav-item'>
                 <!-- UD3.2.e Lo tengo en # ya que todavia no va a ninguna parte. Y dejo adminXXXXX para el activo del boton.  -->
@@ -88,7 +88,7 @@ setcookie("user_email",1, time()+(86400*30), "/");
             </li> 
             <?php } ?>
 
-            <!-- RA4.c 4.1.e Si el valor de la cookie es false es visible-->
+            <!-- RA4.c 4.1.f Si la cookie no existe es visible-->
             <?php  if (!isset($_COOKIE["user_email"])) { ?>
             <li class='nav-item'>
                 <!-- 4.1.a Creo boton y lo direccion a la pagina login.php  -->
@@ -100,7 +100,7 @@ setcookie("user_email",1, time()+(86400*30), "/");
                 </a>
             </li> 
             <?php } ?>
-            <!-- RA4.c 4.1.e Si el valor de la cookie no es false es visible-->
+            <!-- RA4.c 4.1.f Si la cookie existe es visible-->
             <?php  if (isset($_COOKIE["user_email"])) { ?>
             <li class='nav-item'>
                 <!-- 4.1.a Creo boton y lo direccion a la pagina login.php  -->

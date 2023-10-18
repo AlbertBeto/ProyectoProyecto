@@ -1,12 +1,4 @@
-<?php include("templates/header.php"); 
-
-?>
-
-<!-- UD4 4.1 Monto la página login.php 
-creo las variables para almacenar los datos,
- luego los confirmadores tanto del campo vacio en el post
-como de los datos correctos con las expresiones regulares.
-Y muy importante los meto en los campos post creados -->
+<?php include_once ("utiles.php");?>
 <?php
 $email = $password = '';
 $emailErr = $passwordErr = '';
@@ -89,8 +81,15 @@ if ($emailErr === "" && $passwordErr === "") {
 //Esta es la llave del if principal de los errores. 
 }
     ?>
+    
+<!-- UD4 4.1 Monto la página login.php 
+creo las variables para almacenar los datos,
+ luego los confirmadores tanto del campo vacio en el post
+como de los datos correctos con las expresiones regulares.
+Y muy importante los meto en los campos post creados -->
+<?php include("templates/header.php"); 
 
-
+?>
 <!-- UD4 4.1 Aquí creo los formularios y el boton de enviar.
 Con PHP hago que se repita el texto introducido en caso de error.
 Y en caso de error sale en texto rojo el mensaje de error. -->
