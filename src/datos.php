@@ -72,4 +72,5 @@ $categoriasMain = [
 // UD3.2.c Creo variable para nombreApellidos para cliente. 
 $nombreApellidos = "Albert Pérez Baleyto";
 //$loggedIn = true;
+
 ?>

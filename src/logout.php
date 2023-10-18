@@ -1,4 +1,4 @@
-<?php setcookie("user_email",0, time()+(86400*30)); 
+<?php //setcookie("user_email",0, time()-3600); 
 
 
 ?>

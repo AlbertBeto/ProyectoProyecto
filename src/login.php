@@ -1,4 +1,6 @@
-<?php include("templates/header.php"); ?>
+<?php include("templates/header.php"); 
+
+?>
 
 <!-- UD4 4.1 Monto la página login.php 
 creo las variables para almacenar los datos,
@@ -39,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 //UD4 4.1.b Creo el comprobador de usuario y contraseña comparando con un JSON.
-    //Si las variables de error estan vacias crea el array loger con el email y el pass introducidos.
+//Si las variables de error estan vacias crea el array loger con el email y el pass introducidos.
 if ($emailErr === "" && $passwordErr === "") {
             $loger = [
             "email" => $email,
@@ -57,17 +59,15 @@ if ($emailErr === "" && $passwordErr === "") {
            foreach ($tempArray as $user){
             if($user["email"]===$loger["email"]){ 
                 if($user["password"]===$loger["password"]){
-                    // RA4.c 4.1.e Si todo es correcto modificamos la cookie con el valor del email
+                    // RA4.c 4.1.e Si todo es correcto creamos la cookie con el valor del email
                     // y luego saltamos a la nueva web
-                   setcookie("user_email",$loger["email"], time()+(86400*30), "/");
-                                      
+                    setcookie("user_email", $loger["email"], time()+(86400*30), "/");
                     ?>
-            <!-- UD4 4.1.c Si es confirmado de momento cargamos la pagina contacto_lista.php -->
                 <script type="text/javascript">
                      window.location = "/contacto_lista.php";
                 </script>
                 <?php
-                
+
                 //UD4 4.1.d aquí si el password no es correcto hacemos salir el error rojo
                 // y ponemos el break para salir del buble y que no salga el error rojo 
                 // con los siguientes users del array. 
