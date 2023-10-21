@@ -75,6 +75,7 @@
         <script type="text/javascript">
         window.location = "/confirma_proyecto.php";
         </script>
+        
 <?php
         }
     //Esta llave es la del request mode server.
