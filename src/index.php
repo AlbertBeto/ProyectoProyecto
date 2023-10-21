@@ -1,5 +1,5 @@
 <?php include("templates/header.php");?>
-<?php include("datos.php"); ?>
+<?php include_once("datos.php"); ?>
 
 
 
@@ -32,10 +32,10 @@ if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
 <!-- 3.2.f Monto dos botones para que carguen direcciones diferentes por el valor del sort. -->
 <div> 
 <br>     
-<button onclick="location.href='http://localhost:8080/index.php?sort=-1'" type="button">
+<button onclick="location.href='index.php'" type="button">
          Up</button>
 
-         <button onclick="location.href='http://localhost:8080/index.php?sort=1'" type="button">
+         <button onclick="location.href='index.php'" type="button">
          Down</button>
          <br>
 </div>
@@ -69,5 +69,9 @@ if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
         </div>
     <?php endforeach; ?>
 </div>
+<p>Esto es zona de pruebas:
+    Cuantos proyectos hay: <?php echo count($proyectos)?>;
+    El interior de la última posición es:<?php print_r($proyectos[count($proyectos)-1])?>
+</p>
 </div>
 <?php include("templates/footer.php");?>

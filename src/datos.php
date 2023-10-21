@@ -1,4 +1,7 @@
 <?php
+$proyectos = json_decode(file_get_contents('mysql/proyecto1.json'),true);
+
+/*
 $proyectos = [
 	//3.3.a Modifico lo arrays para hacerlos "Reales". De momento la descripción la lleno de Lorem ipsu. 
 	//3.3.b Incorpor los campos categorias, que es un array, y la fecha que para darle un valor temporal le incorporo el formato. 
@@ -64,7 +67,8 @@ $proyectos = [
 	],
 
 ];
-
+$neoProyecto=[];
+*/
 $categoriasMain = [
 	"php" => "PHP", "js" => "JavaScript", "py" => "Python", "mysql" => "MySQL"
 ];
