@@ -25,9 +25,11 @@ if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
 
 ?>
 <div>
-    <!--UD4 4.2.a RA3.e  Creo un boton en index que lleve a la página formulario_proyectos-->    
+    <!--UD4 4.2.a RA3.e  Creo un boton en index que lleve a la página formulario_proyectos-->  
+    <?php  if (isset($_COOKIE["user_email"])) { ?>  
 <button onclick="location.href='formulario_proyectos.php'" type="button">
          Crear proyecto</button>
+         <?php } ?>
 </div>     
 <!-- 3.2.f Monto dos botones para que carguen direcciones diferentes por el valor del sort. -->
 <div> 
@@ -48,7 +50,8 @@ if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
     <?php dateConversor($proyectos); foreach($proyectos as $proyecto): ?>
         <div class="col-sm-3">
             <!-- UD3.3.d Modifico el href del a para dirigirlo a la web del proyecto -->
-            <a href="proyecto.php?id=<?php echo $proyecto['clave'] ?>" class="p-5">
+            
+            <a href="<?php  if (!isset($_COOKIE["user_email"])) { ?>proyecto.php?id=<?php echo $proyecto['clave'] ?> <?php }else{ ?> formulario_proyectos.php?id=<?php echo $proyecto['clave']?> <?php } ?>" class="p-5">
                 <div class="card">
                 <!-- UD3.2.d Introduzco un php con un if por si no tiene dirección de imagen cargar imagen sinImagen -->
                 <img class="card-img-top" src=  <?php echo (empty($proyecto['imagen'])) ? 'static/images/picture-not-available.jpg':$proyecto['imagen'] ?> alt="<?php echo $proyecto['titulo']?>">

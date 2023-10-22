@@ -56,7 +56,6 @@ setcookie("user_email",1, time()+(86400*30), "/");
             </li>
 
             <li class="nav-item">
-                <!--  -->
             <a href="sobre_mi.php" 
                     class="nav-link
                         <?php if($_SERVER['SCRIPT_NAME']=="/sobre_mi.php") { echo "active";}?> 
@@ -81,7 +80,7 @@ setcookie("user_email",1, time()+(86400*30), "/");
                 <!-- UD3.2.e Lo tengo en # ya que todavia no va a ninguna parte. Y dejo adminXXXXX para el activo del boton.  -->
                 <a href='contacto_lista.php' 
                         class='nav-link
-                        <?php if($_SERVER['SCRIPT_NAME']=="contacto_lista.php") { echo "active";}?>
+                        <?php if($_SERVER['SCRIPT_NAME']=="/contacto_lista.php") { echo "active";}?>
                         ' 
                         >ADMINISTRACIÓN
                 </a>
@@ -89,13 +88,12 @@ setcookie("user_email",1, time()+(86400*30), "/");
             <?php } ?>
 
             <!-- RA4.c 4.1.f Si la cookie no existe es visible-->
-            <?php  if (!isset($_COOKIE["user_email"])) { ?>
-            <li class='nav-item'>
-                <!-- 4.1.a Creo boton y lo direccion a la pagina login.php  -->
+            <?php  if (!isset($_COOKIE["user_email"])) { ?>     
+                <li class='nav-item'>
                 <a href='login.php' 
-                        class='nav-link
-                        <?php if($_SERVER['SCRIPT_NAME']=="login.php") { echo "active";}?>
-                        ' 
+                        class="nav-link
+                        <?php if($_SERVER['SCRIPT_NAME']=="/login.php") { echo "active";}?>
+                        "
                         >LOG IN
                 </a>
             </li> 
@@ -106,7 +104,7 @@ setcookie("user_email",1, time()+(86400*30), "/");
                 <!-- 4.1.a Creo boton y lo direccion a la pagina login.php  -->
                 <a href="logout.php"
                         class='nav-link
-                        <?php if($_SERVER['SCRIPT_NAME']=="login.php") { echo "active";}?>
+                        <?php if($_SERVER['SCRIPT_NAME']=="/login.php") { echo "active";}?>
                         ' 
                         >LOG OUT
                 </a>
