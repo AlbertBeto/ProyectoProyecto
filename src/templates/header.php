@@ -77,13 +77,16 @@ setcookie("user_email",1, time()+(86400*30), "/");
             <!-- RA4.c 4.1.f Si la cookie existe es visible-->
             <?php  if (isset($_COOKIE["user_email"])) { ?>
             <li class='nav-item'>
-                <!-- UD3.2.e Lo tengo en # ya que todavia no va a ninguna parte. Y dejo adminXXXXX para el activo del boton.  -->
+                <!-- UD4.3 RA3.e 4.3.a Creo el desplegable en administración manteniendo que solo aparezca logeado.   -->
                 <a href='contacto_lista.php' 
-                        class='nav-link
-                        <?php if($_SERVER['SCRIPT_NAME']=="/contacto_lista.php") { echo "active";}?>
-                        ' 
-                        >ADMINISTRACIÓN
+                class="nav-link dropdown-toggle" id="dropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true">
+                        ADMINISTRACIÓN
+                        <span class="caret"></span>
                 </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <a class="dropdown-item" href="/contacto_lista.php">Lista de contactos</a>
+                    <a class="dropdown-item" href="/usuario.php">Usuario</a>
+                </div>
             </li> 
             <?php } ?>
 
