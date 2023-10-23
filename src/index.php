@@ -51,7 +51,7 @@ if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
         <div class="col-sm-3">
             <!-- UD3.3.d Modifico el href del a para dirigirlo a la web del proyecto -->
             
-            <a href="<?php  if (!isset($_COOKIE["user_email"])) { ?>proyecto.php?id=<?php echo $proyecto['clave'] ?> <?php }else{ ?> formulario_proyectos.php?id=<?php echo $proyecto['clave']?> <?php } ?>" class="p-5">
+            <a href="<?php  if (!isset($_COOKIE["user_email"])) { ?>proyecto.php?id=<?php echo $proyecto['clave'] ?> <?php }else{ ?> formulario_mod_proyecto.php?id=<?php echo $proyecto['clave']?> <?php } ?>" class="p-5">
                 <div class="card">
                 <!-- UD3.2.d Introduzco un php con un if por si no tiene dirección de imagen cargar imagen sinImagen -->
                 <img class="card-img-top" src=  <?php echo (empty($proyecto['imagen'])) ? 'static/images/picture-not-available.jpg':$proyecto['imagen'] ?> alt="<?php echo $proyecto['titulo']?>">
@@ -72,9 +72,5 @@ if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
         </div>
     <?php endforeach; ?>
 </div>
-<p>Esto es zona de pruebas:
-    Cuantos proyectos hay: <?php echo count($proyectos)?>;
-    El interior de la última posición es:<?php print_r($proyectos[count($proyectos)-1])?>
-</p>
 </div>
 <?php include("templates/footer.php");?>

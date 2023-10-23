@@ -7,7 +7,20 @@ include_once("datos.php");
     $claveErr = $tituloErr = $fechaproyectErr = $descripcionProyectoErr = $archivoProyectoErr = "";
     $clave = $titulo = $fechaproyect = $descripcionProyecto = "";
     $pathArchivo = $nombreArchivo = "";
+    $posicion="";
      
+    if(isset($_COOKIE["user_email"])){
+        $proyectop = $_GET["id"]; 
+        
+        //$valoresProyect = array_values($proyectos);
+        foreach($proyectos as $key => $titulopro){
+            if($titulopro["clave"]===$proyectop){
+            $posicion = $key;
+            break;
+            }
+        };
+    
+    }
      
      
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -59,26 +72,23 @@ include_once("datos.php");
 
         if ($claveErr === "" && $tituloErr === "" && $fechaproyectErr === "" && $descripcionProyectoErr === "") {
             
-            $neoProyecto = [
+            $neoproyecto = [
             "clave" => $clave,
             "titulo" => $titulo,
             "descripcion" => $descripcionProyecto,
             "imagen" => $pathArchivo,
             "categorias" => [],
-            "fecha" => $fechaproyect,
+            "fecha" => $fechaproyect
             ];
 
-            // UD4.2 RA3.e 4.2.e En esta zona cogemos el json lo desplegamos, añadimos y  lo guardamos. 
-                //Aqui cargamos el json del archivo en un array temporal .
-            $leoproyectos = json_decode(file_get_contents('mysql/proyecto1.json'),true);
-                //Si el json está vacio inicializamos un array vacio.
-            if($leoproyectos === NULL){
-                $leoproyectos = [];
-            };
-                //Aqui incluye en el array el nuevo proyecto
-            array_push($leoproyectos, $neoProyecto);
+            // UD4.2 RA3.e 4.2.e Esta es la zona en un principio guardariamos el array modifficado pero no funciona. 
+            
+            if($posicion!==""){
+                $proyectos[$posicion]=$neoproyecto;
+            }
+            
                 //metemos en un array y lo codificamos en json
-            $proyectos_json = json_encode($leoproyectos);
+            $proyectos_json = json_encode($proyectos);
                 //Aqui guarda el nuevo array otra vez en el archivo
             file_put_contents('mysql/proyecto1.json', $proyectos_json);
             
@@ -86,16 +96,15 @@ include_once("datos.php");
                 <!-- Ahora sale del minibucle del php realiza el salto de web a la pagina
                 de confirmación y acaba de cerrarlo todo.   -->
         <script type="text/javascript">
-         // UD4.2 RA3.e 4.2.f damos valor a id en la url usando la clave
+            // UD4.2 RA3.e 4.2.f damos valor a id en la url usando la clave
         window.location = "/confirma_proyecto.php?id=<?php echo $clave ?>";
         console.log($proyectos)
         </script>
-   
-
-<?php
+   <?php
         }       
     
     }
+   
 ?>
 <div class="container">
 <h2 class="mb-5">Formulario Proyectos</h2>
@@ -105,7 +114,7 @@ include_once("datos.php");
 <div class="mb-3 col-sm-6 p-0">
     <div class="row">
         <label for="claveID" class="form-label">Clave</label>
-        <input type="text" name="clave" value="<?php echo $clave;?>" class="form-control" id="claveID"
+        <input type="text" name="clave" value="<?php echo $proyectos[$posicion]["clave"];?>" class="form-control" id="claveID"
         placeholder="Introduzca clave" >
         <span class="text-danger"> <?php echo $claveErr ?> </span>
     </div>
@@ -113,15 +122,14 @@ include_once("datos.php");
 <div class="row">
     <div class="mb-3 col-sm-6 p-0">
         <label for="tituloID" class="form-label">Titulo del proyecto</label>
-        <input type="text" name="titulo" value="<?php echo $titulo;?>" class="form-control"
+        <input type="text" name="titulo" value="<?php echo $proyectos[$posicion]["titulo"];?>" class="form-control"
         id="tituloID" placeholder="Título del proyecto">
         <span class="text-danger"> <?php echo $tituloErr ?> </span>
     </div>
 
     <div class="mb-3 pl-2 col-sm-6 p-0">
         <label for="fechaproyect" class="form-label">Fecha del proyecto</label>
-        <input type="text" name="fechaproyect" value="<?php echo $fechaproyect;?>" class="form-control"
-        id="fechaproyectID" placeholder="Fecha final del proyecto">
+        <input type="text" name="fechaproyect" class="form-control" id="fechaproyectID" placeholder="Fecha final del proyecto" value="<?php echo $proyectos[$posicion]['fecha'];?>">
         <span class="text-danger"> <?php echo $fechaproyectErr ?> </span>
     </div>
 </div>
@@ -129,6 +137,7 @@ include_once("datos.php");
 <div class="row mb-4">
 <label for="areaTexto" class="form-label">Descripción del proyecto</label>
 <textarea class="form-control" name="descripcionProyecto" id="areaTexto" rows="3" placeholder="Escriba la descripción del proyecto."><?php print $descripcionProyecto;?>
+    <?php echo $proyectos[$posicion]["descripcion"];?>
 </textarea>
 <span class="text-danger"> <?php echo $descripcionProyectoErr ?> </span>
 </div>

@@ -32,7 +32,7 @@ setcookie("user_email",1, time()+(86400*30), "/");
         <ul class="nav nav-pills">
             <li class="nav-item">
                 <!-- UD3.2.a Modifico el href para enlazarlo con la pagina Inicio que es index.php -->
-                <a href="index.php?sort=-1" 
+                <a href="index.php" 
                     class="nav-link
                         <?php if($_SERVER['SCRIPT_NAME']=="/index.php") { echo "active";}?> 
                         " 
