@@ -1,7 +1,6 @@
 <?php include("templates/header.php");?>
 <?php include_once("datos.php"); ?>
-
-
+<?php include("mysql/db_credenciales.php"); ?>
 
 <?php 
     // Importante recordar poner en el navegador al final de url el valor de sort
@@ -71,6 +70,20 @@ if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
             </a>
         </div>
     <?php endforeach; ?>
+</div>
+</div>
+<?php
+//Esto es para la base de datos.
+try {
+$conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+echo "Conexión exitosa";
+} catch(PDOException $e) {
+echo "La conexión ha fallado: " . $e->getMessage();
+}
+?>
+<div class="container mb-5">
+<div class="row">
 </div>
 </div>
 <?php include("templates/footer.php");?>
