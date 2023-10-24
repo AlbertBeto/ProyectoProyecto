@@ -1,5 +1,5 @@
 <?php
-$proyectos = json_decode(file_get_contents('mysql/proyecto1.json'),true);
+//$proyectos = json_decode(file_get_contents('mysql/proyecto1.json'),true);
 // UD4.3 RA4.f 4.3.4.f Creamos una variable donde almacenamos la decodificación del json de usuarios. 
 $usuarios = json_decode(file_get_contents('mysql/usuario.json'),true);
 /*

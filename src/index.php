@@ -1,8 +1,23 @@
 <?php include("templates/header.php");?>
 <?php include_once("datos.php"); ?>
 <?php include("mysql/db_credenciales.php"); ?>
+<?php include("mysql/proyecto_sql.php"); ?>
 
 <?php 
+//Esto es para la base de datos.
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Conexión exitosa";
+} catch(PDOException $e) {
+    echo "La conexión ha fallado: " . $e->getMessage();
+}
+
+$consulta = $conn->prepare($proyecto_select_all);
+$resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
+$consulta->execute();
+$proyectos = $consulta->fetchAll();
+
     // Importante recordar poner en el navegador al final de url el valor de sort
     // Ejemplo----- http://localhost:8080/index.php?sort=-1
     $sort = $_GET['sort'];
@@ -59,11 +74,12 @@ if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
                         <p class="card-text"><?php echo $proyecto['descripcion']?></p>
                         <!--UD 3.3.c Creo un foreach para que repase los valores del array categorias, mire si existen en el array categorias main y en caso afirmativo imprime el valor de categoriasMain  -->
                         <?php
+                        /*
                         foreach($proyecto['categorias'] as $cat){
                                 if(array_key_exists($cat,$categoriasMain)){
                                 echo $categoriasMain[$cat]." ";
                                 }
-                            } 
+                            }*/ 
                         ?>                                                                           
                     </div>
                 </div>
@@ -73,14 +89,9 @@ if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
 </div>
 </div>
 <?php
-//Esto es para la base de datos.
-try {
-$conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-echo "Conexión exitosa";
-} catch(PDOException $e) {
-echo "La conexión ha fallado: " . $e->getMessage();
-}
+
+
+
 ?>
 <div class="container mb-5">
 <div class="row">
@@ -93,3 +104,4 @@ Se ha creado la cookie de sesión: <?php if(isset($_SESSION["user_email"])){
 
 </div>
 <?php include("templates/footer.php");?>
+<?php $conn = null; ?>
