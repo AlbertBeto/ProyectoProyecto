@@ -11,19 +11,9 @@ $emailErr = $passwordErr = $nombreapellidoErr = $dniErr ='';
 $posicion = "";
 $session_value = "";
 
-// UD4.3 RA4.c 4.3.4.c Aquí recuperamos los datos de la cookie
-// UD4.3 RA4.f 4.3.4.f almacenamos su posición dentro del array de usuarios que tenemos en datos.php
-if(isset($_SESSION["user_email"])){
-    $session_value = $_SESSION["user_email"]; 
-    
-    foreach($usuarios as $key => $userrun){
-        if($userrun["email"]===$session_value){
-        $posicion = $key;
-        break;
-        }
-    };
 
-}
+
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -68,7 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         }
 }
-
 /*
 //Copio el bloque creado en formulario_mod_proyecto.php para la modificación del array.
 //NO FUNCIONA pero ya tengo el bloque aquí para modificarlo una vez se detect y solucione el error. 
@@ -106,12 +95,22 @@ if ($claveErr === "" && $tituloErr === "" && $fechaproyectErr === "" && $descrip
         }
 */
     ?>
-    
-
 <?php include("templates/header.php"); 
+
+
+// UD4.3 RA4.c 4.3.4.c Aquí recuperamos la variable se la sesion
+// UD4.3 RA4.f 4.3.4.f almacenamos su posición dentro del array de usuarios que tenemos en datos.php
+
+$session_value = $_SESSION["user_email"]; 
+    
+foreach($usuarios as $key => $userrun){
+    if($userrun["email"]===$session_value){
+    $posicion = $key;
+    break;
+    }
+};
+
 ?>
-
-
 <div class="container">
     <h2 class="mb-5">Usuario</h2>
     <div class="row">

@@ -53,6 +53,7 @@ if ($emailErr === "" && $passwordErr === "") {
                     // y luego saltamos a la nueva web
                     //setcookie("user_email", $loger["email"], time()+(86400*30), "/");
                     //procedo a cambiarlo a cookies de sesión.
+                    session_start();
                     $_SESSION["user_email"] = $loger["email"];
                    
                     ?>
