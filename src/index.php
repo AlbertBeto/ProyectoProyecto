@@ -4,7 +4,7 @@
 <?php include("mysql/proyecto_sql.php"); ?>
 
 <?php 
-//Esto es para la base de datos.
+
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -74,12 +74,11 @@ if(ISSET ($_GET['delete']) && $_GET['delete'] === "true"){
                         <p class="card-text"><?php echo $proyecto['descripcion']?></p>
                         <!--UD 3.3.c Creo un foreach para que repase los valores del array categorias, mire si existen en el array categorias main y en caso afirmativo imprime el valor de categoriasMain  -->
                         <?php
-                        /*
                         foreach($proyecto['categorias'] as $cat){
                                 if(array_key_exists($cat,$categoriasMain)){
                                 echo $categoriasMain[$cat]." ";
                                 }
-                            }*/ 
+                            } 
                         ?>                                                                           
                     </div>
                 </div>
