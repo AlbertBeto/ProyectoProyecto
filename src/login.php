@@ -2,9 +2,8 @@
 <?php
 $email = $password = '';
 $emailErr = $passwordErr = '';
-$cookie_name = "";
-$cookie_value = "";
-
+$session_name = "";
+$session_value = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     
@@ -31,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         }
 }
-
 //UD4 4.1.b Creo el comprobador de usuario y contraseña comparando con un JSON.
 //Si las variables de error estan vacias crea el array loger con el email y el pass introducidos.
 if ($emailErr === "" && $passwordErr === "") {
@@ -53,7 +51,11 @@ if ($emailErr === "" && $passwordErr === "") {
                 if($user["password"]===$loger["password"]){
                     // RA4.c 4.1.e Si todo es correcto creamos la cookie con el valor del email
                     // y luego saltamos a la nueva web
-                    setcookie("user_email", $loger["email"], time()+(86400*30), "/");
+                    //setcookie("user_email", $loger["email"], time()+(86400*30), "/");
+                    //procedo a cambiarlo a cookies de sesión.
+                    session_start();
+                    $_SESSION["user_email"] = $loger["email"];
+                   
                     ?>
                 <script type="text/javascript">
                      window.location = "/contacto_lista.php";
@@ -81,15 +83,13 @@ if ($emailErr === "" && $passwordErr === "") {
 //Esta es la llave del if principal de los errores. 
 }
     ?>
-    
+<?php include("templates/header.php"); 
+?>
 <!-- UD4 4.1 Monto la página login.php 
 creo las variables para almacenar los datos,
  luego los confirmadores tanto del campo vacio en el post
 como de los datos correctos con las expresiones regulares.
 Y muy importante los meto en los campos post creados -->
-<?php include("templates/header.php"); 
-
-?>
 <!-- UD4 4.1 Aquí creo los formularios y el boton de enviar.
 Con PHP hago que se repita el texto introducido en caso de error.
 Y en caso de error sale en texto rojo el mensaje de error. -->

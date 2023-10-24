@@ -1,9 +1,19 @@
-<?php include_once ("utiles.php");?>
+<?php include_once ("utiles.php");
+include_once("datos.php");
+// UD4.3 RA4.a 4.3.4.a Decido usar las cookies de sesion ya que aportan más seguridad al gestionar los datos desde el servidor, evitar que 
+//un usuario modifiue los datos de la cookie persistente o cierre el navegador sin desloguear y sobre todo con la gestión de los datos del usuario
+// aunque den mas carga de recursos en el sevidor. 
+?>
+
 <?php
 $email = $password = $nombreapellido = $dni = '';
 $emailErr = $passwordErr = $nombreapellidoErr = $dniErr ='';
-$cookie_name = "";
-$cookie_value = "";
+$posicion = "";
+$session_value = "";
+
+
+
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -48,64 +58,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         }
 }
-
 /*
-//UD4 4.1.b Creo el comprobador de usuario y contraseña comparando con un JSON.
-//Si las variables de error estan vacias crea el array loger con el email y el pass introducidos.
-if ($emailErr === "" && $passwordErr === "") {
-            $loger = [
-            "email" => $email,
-            "password" => $password,
+//Copio el bloque creado en formulario_mod_proyecto.php para la modificación del array.
+//NO FUNCIONA pero ya tengo el bloque aquí para modificarlo una vez se detect y solucione el error. 
+if ($claveErr === "" && $tituloErr === "" && $fechaproyectErr === "" && $descripcionProyectoErr === "") {
+            
+            $neoproyecto = [
+            "clave" => $clave,
+            "titulo" => $titulo,
+            "descripcion" => $descripcionProyecto,
+            "imagen" => $pathArchivo,
+            "categorias" => [],
+            "fecha" => $fechaproyect
             ];
 
-            //Aqui cargamos el json del archivo en la variable array temporal .
-            $tempArray = json_decode(file_get_contents('mysql/usuario.json'), true);
-            //Esto es por si el json está vacio NULL que cree un array vacio. 
-            if ($tempArray === NULL){
-                $tempArray = [];
-           }
-           //Aqui hacemos la comparativa con un foreach del array creado con el json.
-           // 4.1.c Cada user lo comprobamos con el email recibido y comprobamos el pass tambien. 
-           foreach ($tempArray as $user){
-            if($user["email"]===$loger["email"]){ 
-                if($user["password"]===$loger["password"]){
-                    // RA4.c 4.1.e Si todo es correcto creamos la cookie con el valor del email
-                    // y luego saltamos a la nueva web
-                    setcookie("user_email", $loger["email"], time()+(86400*30), "/");
-                    ?>
-                <script type="text/javascript">
-                     window.location = "/contacto_lista.php";
-                </script>
-                <?php
-
-                //UD4 4.1.d aquí si el password no es correcto hacemos salir el error rojo
-                // y ponemos el break para salir del buble y que no salga el error rojo 
-                // con los siguientes users del array. 
-                }else{
-                    $passwordErr = "El password introducido es erroneo.";
-                    break;
-                }
-                
-                // UD4 4.1.d Aquí comprobamos si está la etiqueta vacia para 
-                //evitar el salte el error al estar vacio.
-            } elseif($loger["email"]==''){
-                $emailErr = '';
-               // UD4 4.1.d Y aquí damos el error si no es está correcto y no está vacio. 
-            }else{
-                $emailErr = "El usuario introducido es erroneo.";
-                 }
-            //Esta es la llave del foreach
-           }
-//Esta es la llave del if principal de los errores. 
-}
+            // UD4.2 RA3.e 4.2.e Esta es la zona en un principio guardariamos el array modifficado pero no funciona. 
+            
+            if($posicion!==""){
+                $proyectos[$posicion]=$neoproyecto;
+            }
+            
+                //metemos en un array y lo codificamos en json
+            $proyectos_json = json_encode($proyectos);
+                //Aqui guarda el nuevo array otra vez en el archivo
+            file_put_contents('mysql/proyecto1.json', $proyectos_json);
+            
+            ?>
+                <!-- Ahora sale del minibucle del php realiza el salto de web a la pagina
+                de confirmación y acaba de cerrarlo todo.   -->
+        <script type="text/javascript">
+            // UD4.2 RA3.e 4.2.f damos valor a id en la url usando la clave
+        window.location = "/confirma_proyecto.php?id=<?php echo $clave ?>";
+        console.log($proyectos)
+        </script>
+   <?php
+        }
 */
     ?>
-    
-
 <?php include("templates/header.php"); 
+// UD4.3 RA4.c 4.3.4.c Aquí recuperamos la variable se la sesion
+// UD4.3 RA4.f 4.3.4.f almacenamos su posición dentro del array de usuarios que tenemos en datos.php
+$session_value = $_SESSION["user_email"];   
+foreach($usuarios as $key => $userrun){
+    if($userrun["email"]===$session_value){
+    $posicion = $key;
+    break;
+    }
+};
+
 ?>
-
-
 <div class="container">
     <h2 class="mb-5">Usuario</h2>
     <div class="row">
@@ -114,7 +115,8 @@ if ($emailErr === "" && $passwordErr === "") {
             <div class="mb-3 col-sm-6 p-0">
                 <div class="row">
                     <label for="emailID" class="form-label">Email</label>
-                    <input type="text" name="email" value="<?php echo $email;?>" class="form-control" id="emailID"
+                    <!--  UD4.3 RA4.f 4.3.4.f  en el value del input de este y de los demas usamos la posición almacenada para cargar la info del array usuarios de datos.php-->
+                    <input type="text" name="email" value="<?php echo $usuarios[$posicion]["email"];?>" class="form-control" id="emailID"
                     placeholder="Introduzca su email" >
                     <span class="text-danger"> <?php echo $emailErr ?> </span>
                 </div>
@@ -123,7 +125,7 @@ if ($emailErr === "" && $passwordErr === "") {
             <div class="mb-3 col-sm-6 p-0">
                 <div class="row">
                     <label for="nombreapellidoID" class="form-label">Nombre y apellidos</label>
-                    <input type="text" name="nombreapellido" value="<?php echo $nombreapellido;?>" class="form-control" id="nombreapellidoID"
+                    <input type="text" name="nombreapellido" value="<?php echo $usuarios[$posicion]["nombreapellido"];?>" class="form-control" id="nombreapellidoID"
                     placeholder="Introduzca su nombre y sus dos apellidos" >
                     <span class="text-danger"> <?php echo $nombreapellidoErr ?> </span>
                 </div>
@@ -132,7 +134,7 @@ if ($emailErr === "" && $passwordErr === "") {
             <div class="mb-3 col-sm-6 p-0">
                 <div class="row">
                     <label for="dniID" class="form-label">DNI</label>
-                    <input type="text" name="dni" value="<?php echo $dni;?>" class="form-control" id="dniID"
+                    <input type="text" name="dni" value="<?php echo $usuarios[$posicion]["dni"];?>" class="form-control" id="dniID"
                     placeholder="Introduzca su DNI completo" >
                     <span class="text-danger"> <?php echo $dniErr ?> </span>
                 </div>
@@ -141,7 +143,7 @@ if ($emailErr === "" && $passwordErr === "") {
             <div class="row">
                 <div class="mb-3 col-sm-6 p-0">
                     <label for="passwordID" class="form-label">Password</label>
-                    <input type="password" name="password" value="<?php echo $password;?>" class="form-control"
+                    <input type="password" name="password" value="<?php echo $usuarios[$posicion]["password"];?>" class="form-control"
                     id="passwordID" placeholder="Su password">
                     <span class="text-danger"> <?php echo $passwordErr ?> </span>
                 </div>
