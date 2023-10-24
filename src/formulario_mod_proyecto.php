@@ -9,7 +9,7 @@ include_once("datos.php");
     $pathArchivo = $nombreArchivo = "";
     $posicion="";
      
-    if(isset($_COOKIE["user_email"])){
+    if(isset($_SESSION["user_email"])){
         $proyectop = $_GET["id"]; 
         
         //$valoresProyect = array_values($proyectos);
