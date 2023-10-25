@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysql
--- Tiempo de generación: 24-10-2023 a las 06:45:19
+-- Tiempo de generación: 25-10-2023 a las 11:33:11
 -- Versión del servidor: 5.7.43
 -- Versión de PHP: 8.2.8
 
@@ -93,7 +93,9 @@ CREATE TABLE `contacto` (
 --
 
 INSERT INTO `contacto` (`id`, `NombreApellidos`, `e-mail`, `Telefono`, `Particular/empresa`, `Mensaje`, `Archivo`) VALUES
-(1, 'Jose Martinez Valado', 'jmv@gmail.com', 965657852, 'Particular', 'Este es un mensaje de prueba para comprobar la conexión a la BBDD.', NULL);
+(1, 'Romano Pradi', 'RPradi@ggg.com', 966112233, 'Particular', 'Contactenme lo antes posible. ', NULL),
+(2, 'Joseph Wolf', 'jwolf@ggg.com', 933112255, 'empresa', 'Contactenme lo antes posible. ', 'uploads/bannefragata.jpg'),
+(3, 'Wittaker', 'Wittaker@ggg.com', 938812255, 'empresa', 'Contactenme lo antes posible o te crujo', NULL);
 
 -- --------------------------------------------------------
 
@@ -105,7 +107,7 @@ CREATE TABLE `proyecto` (
   `id` int(11) NOT NULL,
   `Clave` varchar(30) NOT NULL,
   `Titulo` varchar(40) NOT NULL,
-  `Fecha` date NOT NULL,
+  `Fecha` varchar(10) NOT NULL,
   `Descripcion` varchar(400) NOT NULL,
   `imagen` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -115,13 +117,13 @@ CREATE TABLE `proyecto` (
 --
 
 INSERT INTO `proyecto` (`id`, `Clave`, `Titulo`, `Fecha`, `Descripcion`, `imagen`) VALUES
-(1, 'proyecto1', 'Pet-Care', '2022-10-13', 'Ecuentra gente que cuidaría de tu mascota, dias concretos o períodos vacacionales', 'static/images/pet_care.jpg'),
-(2, 'proyecto2', 'Finanzas domésticas', '2021-06-10', 'Ayuda a mantener una economía de hogar clara y presupuestada.', 'static/images/finanzas.webp'),
-(3, 'proyecto3', 'Ordena tu biblioteca', '2023-01-21', 'Mantén una lista actualizada de tus libros y gestionalos como si de una biblioteca se tratase.', 'static/images/libreria.jpg'),
-(4, 'proyecto4', 'Vende tu bici', '2023-09-21', 'Tasamos tu bicicleta para que puedas sacarle el máximo beneficio en su venta.', NULL),
-(5, 'proyecto5', 'ViniVintage', '2022-05-15', 'Encuentra ese vinilo deseado o véndelo si te quieres deshacer de él.', 'static/images/vinilos.jpg'),
-(6, 'proyecto6', 'Hobby-fun', '2023-04-25', 'Comparte tus aficiones con gente de tu vecindario.', 'static/images/hobby.webp'),
-(7, 'proyecto7', 'Prueba', '2023-10-12', 'Esto es una prueba, para comprobar el funcionamiento de la creación de proyectos.', 'static/images/ordenador2000.jpg');
+(1, 'comisaria', 'Comisaria social', '04/07/1950', 'Lorem fistrum amatomaa sexuarl al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.', 'static/images/comisaria.jpg'),
+(2, 'trenza', 'Peluqueria Lola', '04/08/1980', 'Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas.', 'static/images/trenza.jpg'),
+(3, 'calamar', 'Pescaderia', '04/06/1970', 'Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas.', 'static/images/calamar.jpg'),
+(4, 'tenis', 'Club deportivo', '04/02/1990', 'Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ', 'static/images/tenis.jpg'),
+(5, 'corso', 'Una de Piratas', '04/10/1960', 'Encuentra ese vinilo deseado o véndelo si te quieres deshacer de él.', 'static/images/pirata.jpg'),
+(6, 'Calabazas', 'Disfraces Hallowen/Terror', '11/10/2023', 'Tienda de disfraces especializados para Hallowen o tematica de terror', NULL),
+(7, 'Bustos', 'Marmoleria y Moldes Bach', '08/08/2005', 'Especializados en venta y realización de bustos de personajes clásicos o modernos', NULL);
 
 -- --------------------------------------------------------
 
@@ -164,9 +166,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `e-mail`, `password`, `NombreApellidos`, `DNI`, `Activo`, `Admin`) VALUES
-(1, 'juanito@gmail.com', 'juanito1234', 'Juan Martinez Valero', '65852681A', 1, 0),
-(2, 'pedrito@gmail.com', 'pedrito1234', 'Pedro Sánchez Galiano', '68321594L', 1, 0),
-(3, 'maria@gmail.com', 'maria1234', 'María Galvez Giménez', '76591753M', 1, 0);
+(1, 'albert@ggg.com', 'Albert78', 'Albert Perez Baleyto', '38111111E', 1, 0),
+(2, 'cristi@ggg.com', 'Cristi78', 'Cristina B B', '38444555t', 1, 0),
+(3, 'mai@ggg.com', 'Mai45678', 'Mai Mai B', '48666777J', 1, 0);
 
 --
 -- Índices para tablas volcadas
@@ -182,8 +184,8 @@ ALTER TABLE `categoria`
 -- Indices de la tabla `categoria_proyecto`
 --
 ALTER TABLE `categoria_proyecto`
-  ADD KEY `fk_proyecto` (`Proyecto`),
-  ADD KEY `fk_categoria` (`Categoria`);
+  ADD KEY `fk_categoria` (`Categoria`),
+  ADD KEY `fk_proyecto` (`Proyecto`);
 
 --
 -- Indices de la tabla `contacto`

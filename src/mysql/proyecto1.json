@@ -1,1 +1,53 @@
-[{"clave":"comisaria","titulo":"Comisaria social","descripcion":"Lorem fistrum amatomaa sexuarl al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.","imagen":"static/images/comisaria.jpg","categorias":["php","py"],"fecha":"04/07/1950"},{"clave":"trenza","titulo":"Peluqueria Lola","descripcion":"Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco sexuarl.","imagen":"static\/images\/trenza.jpg","categorias":[],"fecha":"04/08/1980"},{"clave":"calamar","titulo":"Pescaderia","descripcion":"Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va ust\u00e9 muy cargadoo. Ahorarr a wan te va a has\u00e9 pupitaa ahorarr pecador sexuarl.","imagen":"static\/images\/calamar.jpg","categorias":[],"fecha":"04/06/1970"},{"clave":"tenis","titulo":"Club deportivo","descripcion":"Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va ust\u00e9 muy cargadoo. Ahorarr a wan te va a has\u00e9 pupitaa ahorarr pecador sexuarl.","imagen":"static\/images\/tenis.jpg","categorias":[],"fecha":"04/02/1990"},{"clave":"corso","titulo":"Una de Piratas","descripcion":"Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va ust\u00e9 muy cargadoo. Ahorarr a wan te va a has\u00e9 pupitaa ahorarr pecador sexuarl.","imagen":"static\/images\/pirata.jpg","categorias":[],"fecha":"04\/10\/1960"},{"clave":"Calabazas","titulo":"Disfraces Hallowen\/Terror","descripcion":"Tienda de disfraces especializados para Hallowen o tematica de terror","imagen":"","categorias":[],"fecha":"11/10/2023"}]
+[
+    {
+        "clave": "comisaria",
+        "titulo": "Comisaria social",
+        "descripcion": "Lorem fistrum amatomaa sexuarl al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.",
+        "imagen": "static/images/comisaria.jpg",
+        "categorias": [
+            "php",
+            "py"
+        ],
+        "fecha": "04/07/1950"
+    },
+    {
+        "clave": "trenza",
+        "titulo": "Peluqueria Lola",
+        "descripcion": "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco sexuarl.",
+        "imagen": "static\/images\/trenza.jpg",
+        "categorias": [],
+        "fecha": "04/08/1980"
+    },
+    {
+        "clave": "calamar",
+        "titulo": "Pescaderia",
+        "descripcion": "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va ust\u00e9 muy cargadoo. Ahorarr a wan te va a has\u00e9 pupitaa ahorarr pecador sexuarl.",
+        "imagen": "static\/images\/calamar.jpg",
+        "categorias": [],
+        "fecha": "04/06/1970"
+    },
+    {
+        "clave": "tenis",
+        "titulo": "Club deportivo",
+        "descripcion": "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va ust\u00e9 muy cargadoo. Ahorarr a wan te va a has\u00e9 pupitaa ahorarr pecador sexuarl.",
+        "imagen": "static\/images\/tenis.jpg",
+        "categorias": [],
+        "fecha": "04/02/1990"
+    },
+    {
+        "clave": "corso",
+        "titulo": "Una de Piratas",
+        "descripcion": "Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ese que llega caballo blanco caballo negroorl fistro al ataquerl va ust\u00e9 muy cargadoo. Ahorarr a wan te va a has\u00e9 pupitaa ahorarr pecador sexuarl.",
+        "imagen": "static\/images\/pirata.jpg",
+        "categorias": [],
+        "fecha": "04\/10\/1960"
+    },
+    {
+        "clave": "Calabazas",
+        "titulo": "Disfraces Hallowen\/Terror",
+        "descripcion": "Tienda de disfraces especializados para Hallowen o tematica de terror",
+        "imagen": "",
+        "categorias": [],
+        "fecha": "11/10/2023"
+    }
+]

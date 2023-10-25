@@ -1,1 +1,20 @@
-[{"email":"albert@ggg.com","nombreapellido":"Albert Perez Baleyto", "dni":"38111111E", "password":"Albert78"},{"email":"cristi@ggg.com","nombreapellido":"Cristina B B","dni":"38444555t", "password":"Cristi78"},{"email":"mai@ggg.com","nombreapellido":"Mai Mai B","dni":"38666777J", "password":"Mai45678"}]
+[
+    {
+        "email": "albert@ggg.com",
+        "nombreapellido": "Albert Perez Baleyto",
+        "dni": "38111111E",
+        "password": "Albert78"
+    },
+    {
+        "email": "cristi@ggg.com",
+        "nombreapellido": "Cristina B B",
+        "dni": "38444555t",
+        "password": "Cristi78"
+    },
+    {
+        "email": "mai@ggg.com",
+        "nombreapellido": "Mai Mai B",
+        "dni": "38666777J",
+        "password": "Mai45678"
+    }
+]
