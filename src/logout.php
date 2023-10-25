@@ -1,10 +1,8 @@
 <?php 
 //RA4.c 4.1.f Al entrar en la web destruimos la cookie y saltamos a index.php
-//setcookie("user_email",0, time()-3600); 
+setcookie("user_email",0, time()-3600); 
 //Procedo a cambiar el sistema a uso de cookies de sesión
-session_start();
-session_unset();
-session_destroy();
+
 ?>
 
 <script type="text/javascript">

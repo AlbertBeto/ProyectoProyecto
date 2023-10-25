@@ -51,10 +51,10 @@ if ($emailErr === "" && $passwordErr === "") {
                 if($user["password"]===$loger["password"]){
                     // RA4.c 4.1.e Si todo es correcto creamos la cookie con el valor del email
                     // y luego saltamos a la nueva web
-                    //setcookie("user_email", $loger["email"], time()+(86400*30), "/");
+                    setcookie("user_email", $loger["email"], time()+(86400*30), "/");
                     //procedo a cambiarlo a cookies de sesión.
-                    session_start();
-                    $_SESSION["user_email"] = $loger["email"];
+                    
+                    $_COOKIE["user_email"] = $loger["email"];
                    
                     ?>
                 <script type="text/javascript">

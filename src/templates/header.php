@@ -1,13 +1,10 @@
-<?php include_once("datos.php");include_once("utiles.php");
-// RA4.c 4.1.e Comprobamos si la cookie ha sido creada, en caso q no
-// la creamos con valor false. 
-/*
+<?php include_once("utiles.php");
+
+
 if(!isset($_COOKIE["user_email"])){
 setcookie("user_email",1, time()+(86400*30), "/"); 
 }
-*/
 
-session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -77,7 +74,7 @@ session_start();
             </li>
 
             <!-- RA4.c 4.1.f Si la cookie existe es visible-->
-            <?php  if (isset($_SESSION["user_email"])) { ?>
+            <?php  if (isset($_COOKIE["user_email"])) { ?>
             <li class='nav-item'>
                 <!-- UD4.3 RA3.e 4.3.a Creo el desplegable en administración manteniendo que solo aparezca logeado.   -->
                 <a href='contacto_lista.php' 
@@ -93,7 +90,7 @@ session_start();
             <?php } ?>
 
             <!-- RA4.c 4.1.f Si la cookie no existe es visible-->
-            <?php  if (!isset($_SESSION["user_email"])) { ?>     
+            <?php  if (!isset($_COOKIE["user_email"])) { ?>     
                 <li class='nav-item'>
                 <a href='login.php' 
                         class="nav-link
@@ -104,7 +101,7 @@ session_start();
             </li> 
             <?php } ?>
             <!-- RA4.c 4.1.f Si la cookie existe es visible-->
-            <?php  if (isset($_SESSION["user_email"])) { ?>
+            <?php  if (isset($_COOKIE["user_email"])) { ?>
             <li class='nav-item'>
                 <!-- 4.1.a Creo boton y lo direccion a la pagina login.php  -->
                 <a href="logout.php"

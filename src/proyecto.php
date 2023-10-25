@@ -1,5 +1,7 @@
 <?php include("templates/header.php"); ?>
 <?php include("datos.php"); ?>
+<?php include("mysql/db_credenciales.php"); ?>
+<?php include("mysql/proyecto_sql.php"); ?>
 
 <!-- UD3.3.d con PHP recupero el id con un get y lo busco en los arrays y una vez encontrado guardo la posición del proyecto. -->
 <?php $proyectop = $_GET["id"]; 
