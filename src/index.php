@@ -13,18 +13,14 @@ try {
     echo "La conexión ha fallado: " . $e->getMessage();
 }
 
-$consulta = $conn->prepare($proyecto_select_all);
-$resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
-$consulta->execute();
 
-$proyectos = $consulta->fetchAll();
 
 ?>
 <div class="container mb-5">
     <div class="row">
-    <?php foreach($proyectos as $proyecto): ?>
+    <?php foreach(get_proyectos_all($conn) as $proyecto): ?>
         <div class="col-sm-3">
-            <a href="#" class="p-5">
+            <a href="proyecto.php?id=<?php echo $proyecto['id']?>" class="p-5">
                 <div class="card">
                     <img class="card-img-top" src="<?php echo $proyecto['imagen']?>" alt="<?php echo
                     utf8_encode($proyecto['titulo'])?>">
