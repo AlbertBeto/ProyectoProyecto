@@ -1,10 +1,11 @@
-<?php include("templates/header.php");?>
-<?php include("mysql/db_credenciales.php"); ?>
-<?php include("mysql/proyecto_sql.php"); ?>
-<?php include("mysql/categoria_sql.php"); ?>
+<?php include_once("templates/header.php");?>
+<?php include_once("mysql/db_credenciales.php"); ?>
+<?php include_once("mysql/proyecto_sql.php"); ?>
+<?php include_once("mysql/categoria_sql.php"); ?>
+<?php include_once("db_access.php"); ?>
 
 <?php 
-
+/*
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -12,8 +13,9 @@ try {
 } catch(PDOException $e) {
     echo "La conexión ha fallado: " . $e->getMessage();
 }
+*/
 
-
+$conn=open_connection();
 
 ?>
 <div class="container mb-5">

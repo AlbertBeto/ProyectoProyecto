@@ -1,3 +1,7 @@
+<?php include_once("db_access.php");
+
+?>
+
 <?php
 function get_proyectos_all($conn){
     $proyecto_select_all = "SELECT * FROM proyecto";
