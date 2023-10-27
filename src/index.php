@@ -8,7 +8,7 @@
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Conexión exitosa";
+   // echo "Conexión exitosa";
 } catch(PDOException $e) {
     echo "La conexión ha fallado: " . $e->getMessage();
 }
@@ -22,8 +22,7 @@ try {
         <div class="col-sm-3">
             <a href="proyecto.php?id=<?php echo $proyecto['id']?>" class="p-5">
                 <div class="card">
-                    <img class="card-img-top" src="<?php echo $proyecto['imagen']?>" alt="<?php echo
-                    utf8_encode($proyecto['titulo'])?>">
+                    <img class="card-img-top" src="<?php echo (($proyecto['imagen']!=NULL) ? $proyecto['imagen']  : "/static/images/picture-not-available.jpg");?> "alt="<?php echo utf8_encode($proyecto['titulo'])?> ">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo utf8_encode($proyecto['titulo']) ?></h5>
                         <p class="card-text"><?php echo utf8_encode($proyecto['descripcion'])?></p>

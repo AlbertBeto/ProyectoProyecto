@@ -1,9 +1,9 @@
 <?php include_once("utiles.php");
 
-
+/*
 if(!isset($_COOKIE["user_email"])){
 setcookie("user_email",1, time()+(86400*30), "/"); 
-}
+}*/
 
 ?>
 <!DOCTYPE html>

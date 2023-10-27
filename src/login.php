@@ -39,7 +39,7 @@ if ($emailErr === "" && $passwordErr === "") {
             ];
 
             //Aqui cargamos el json del archivo en la variable array temporal .
-            $tempArray = json_decode(file_get_contents('mysql/usuario.json'), true);
+           // $tempArray = json_decode(file_get_contents('mysql/usuario.json'), true);
             //Esto es por si el json está vacio NULL que cree un array vacio. 
             if ($tempArray === NULL){
                 $tempArray = [];
