@@ -2,19 +2,11 @@
 <?php include_once("mysql/db_credenciales.php"); ?>
 <?php include_once("mysql/proyecto_sql.php"); ?>
 <?php include_once("mysql/categoria_sql.php"); ?>
-<?php include_once("db_access.php"); ?>
+<?php //UD5.2 5.2.1 RA6.b doy acceso a la web con las funciones para conectar y desconectar la BD
+include_once("db_access.php"); ?>
 
 <?php 
-/*
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-   // echo "Conexión exitosa";
-} catch(PDOException $e) {
-    echo "La conexión ha fallado: " . $e->getMessage();
-}
-*/
-
+//UD5.2 5.2.1 RA6.b creo la variable $conn llamando a la funcion de crear conexión. 
 $conn=open_connection();
 
 ?>
@@ -40,4 +32,5 @@ $conn=open_connection();
     </div>
 </div>
 <?php include("templates/footer.php"); ?>
-<?php $conn = null; ?>
+<?php //UD5.2 5.2.1 RA6.b llamo a la función cerrar conexión y le doy los datos de la conexión y esta procede a cerrar la conn.
+close_connection($conn); ?>
