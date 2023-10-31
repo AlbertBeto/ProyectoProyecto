@@ -13,4 +13,15 @@ function get_categorias_por_proyecto($conn, $proyecto_id){
     $isOk = $consulta->execute();
     return $consulta->fetchAll();
 }
+
+//UD5.3 5.3.b RA6.c Creo una función que devuelva todas las categorias.
+function get_categorias_all($conn){
+    $todas_las_categorias = "SELECT nombre 
+    FROM categoria" ;
+$consulta = $conn->prepare($todas_las_categorias);
+$consulta->setFetchMode(PDO::FETCH_ASSOC);
+$isOk = $consulta->execute();
+return $consulta->fetchAll();
+}
+
 ?>
