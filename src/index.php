@@ -3,7 +3,7 @@
 <?php include_once("mysql/proyecto_sql.php"); ?>
 <?php include_once("mysql/categoria_sql.php"); ?>
 <?php //UD5.2 5.2.1 RA6.b doy acceso a la web con las funciones para conectar y desconectar la BD
-include_once("db_access.php"); ?>
+include_once("mysql/db_access.php"); ?>
 
 <?php 
 //UD5.2 5.2.1 RA6.b creo la variable $conn llamando a la funcion de crear conexión. 
