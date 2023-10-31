@@ -37,4 +37,20 @@ function get_proyectos_por_categoria($conn, $cat){
     return $consulta->fetchAll();
 }
 
+function get_proyectos_order_by($conn, $way, $ordenador){
+    if($way=="ascendente"){
+        $neoway="ASC";
+    }else if($way=="descendente"){
+        $neoway="DES";
+    };
+    $proyecto_ordenado_por = "SELECT * FROM proyecto order by $ordenador $neoway";
+    $consulta = $conn->prepare($proyecto_ordenado_por);
+    $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
+    $isOK = $consulta->execute();
+    return $consulta->fetchAll();
+
+
+    
+}
+
 ?>
