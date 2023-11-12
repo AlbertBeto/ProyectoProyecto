@@ -1,4 +1,5 @@
 <?php include_once("utiles.php");
+include_once("categoria_sql.php");
 
 /*
 if(!isset($_COOKIE["user_email"])){
