@@ -46,7 +46,7 @@ setcookie("user_email",1, time()+(86400*30), "/");
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <!-- UD3.3.e Monto un foreach que recorre el array $categoriasMain y crea un link dentro del desplegable por cada campo -->   
-                <?php foreach ($categoriasMain as $cat){  ?>
+                <?php foreach (get_categorias_all($conn) as $cat){  ?>
                     <a class="dropdown-item" href="#">
                         <?php echo $cat ?>
                     </a>
