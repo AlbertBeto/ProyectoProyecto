@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysql
--- Tiempo de generación: 25-10-2023 a las 11:33:11
+-- Tiempo de generación: 12-11-2023 a las 19:53:33
 -- Versión del servidor: 5.7.43
 -- Versión de PHP: 8.2.8
 
@@ -51,15 +51,15 @@ INSERT INTO `categoria` (`id`, `Nombre`) VALUES
 
 CREATE TABLE `categoria_proyecto` (
   `id` int(11) NOT NULL,
-  `Proyecto` int(11) NOT NULL,
-  `Categoria` int(11) NOT NULL
+  `proyecto_id` int(11) NOT NULL,
+  `categoria_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `categoria_proyecto`
 --
 
-INSERT INTO `categoria_proyecto` (`id`, `Proyecto`, `Categoria`) VALUES
+INSERT INTO `categoria_proyecto` (`id`, `proyecto_id`, `categoria_id`) VALUES
 (1, 1, 3),
 (2, 1, 4),
 (3, 2, 5),
@@ -105,10 +105,10 @@ INSERT INTO `contacto` (`id`, `NombreApellidos`, `e-mail`, `Telefono`, `Particul
 
 CREATE TABLE `proyecto` (
   `id` int(11) NOT NULL,
-  `Clave` varchar(30) NOT NULL,
-  `Titulo` varchar(40) NOT NULL,
-  `Fecha` varchar(10) NOT NULL,
-  `Descripcion` varchar(400) NOT NULL,
+  `clave` varchar(30) NOT NULL,
+  `titulo` varchar(40) NOT NULL,
+  `fecha` varchar(10) NOT NULL,
+  `descripcion` varchar(400) NOT NULL,
   `imagen` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -116,12 +116,12 @@ CREATE TABLE `proyecto` (
 -- Volcado de datos para la tabla `proyecto`
 --
 
-INSERT INTO `proyecto` (`id`, `Clave`, `Titulo`, `Fecha`, `Descripcion`, `imagen`) VALUES
-(1, 'comisaria', 'Comisaria social', '04/07/1950', 'Lorem fistrum amatomaa sexuarl al ataquerl va usté muy cargadoo. Ahorarr a wan te va a hasé pupitaa ahorarr pecador sexuarl.', 'static/images/comisaria.jpg'),
-(2, 'trenza', 'Peluqueria Lola', '04/08/1980', 'Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas.', 'static/images/trenza.jpg'),
-(3, 'calamar', 'Pescaderia', '04/06/1970', 'Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas.', 'static/images/calamar.jpg'),
-(4, 'tenis', 'Club deportivo', '04/02/1990', 'Lorem fistrum amatomaa sexuarl benemeritaar ese hombree la caidita pecador ese hombree por la gloria de mi madre me cago en tus muelas. Sexuarl hasta luego Lucas ', 'static/images/tenis.jpg'),
-(5, 'corso', 'Una de Piratas', '04/10/1960', 'Encuentra ese vinilo deseado o véndelo si te quieres deshacer de él.', 'static/images/pirata.jpg'),
+INSERT INTO `proyecto` (`id`, `clave`, `titulo`, `fecha`, `descripcion`, `imagen`) VALUES
+(1, 'comisaria', 'Comisaria social', '04/07/1950', 'Ves a alguien realizar un delito?\r\nDenuncialo en tu comisaria social mas cercana. \r\nSolo con pruebas y testigos. ', 'static/images/comisaria.jpg'),
+(2, 'trenza', 'Peluqueria Lola', '04/08/1980', 'Lola, la mejor. \r\nEntraras guapo y saldras de la muelte. ', 'static/images/trenza.jpg'),
+(3, 'calamar', 'Pescaderia', '04/06/1970', 'Ay calamar, que a la placha te vas. \r\nLo mejor del mar cerca de tu casa.', 'static/images/calamar.jpg'),
+(4, 'tenis', 'Club deportivo', '04/02/1990', 'Para amapolos y amapolas. \r\nEspecial descuento a fachalecos y sobrados de la vida.', 'static/images/tenis.jpg'),
+(5, 'corso', 'Una de Piratas', '04/10/1960', 'Hohoho la botella de ron. \r\nLibres fueron hasta que los mataron. \r\nAnarquia en el mar.\r\nSu historia.', 'static/images/pirata.jpg'),
 (6, 'Calabazas', 'Disfraces Hallowen/Terror', '11/10/2023', 'Tienda de disfraces especializados para Hallowen o tematica de terror', NULL),
 (7, 'Bustos', 'Marmoleria y Moldes Bach', '08/08/2005', 'Especializados en venta y realización de bustos de personajes clásicos o modernos', NULL);
 
@@ -184,8 +184,8 @@ ALTER TABLE `categoria`
 -- Indices de la tabla `categoria_proyecto`
 --
 ALTER TABLE `categoria_proyecto`
-  ADD KEY `fk_categoria` (`Categoria`),
-  ADD KEY `fk_proyecto` (`Proyecto`);
+  ADD KEY `fk_categoria` (`categoria_id`),
+  ADD KEY `fk_proyecto` (`proyecto_id`);
 
 --
 -- Indices de la tabla `contacto`
@@ -198,7 +198,7 @@ ALTER TABLE `contacto`
 --
 ALTER TABLE `proyecto`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `Clave` (`Clave`);
+  ADD UNIQUE KEY `Clave` (`clave`);
 
 --
 -- Indices de la tabla `sesion`
@@ -221,8 +221,8 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `categoria_proyecto`
 --
 ALTER TABLE `categoria_proyecto`
-  ADD CONSTRAINT `fk_categoria` FOREIGN KEY (`Categoria`) REFERENCES `categoria` (`id`),
-  ADD CONSTRAINT `fk_proyecto` FOREIGN KEY (`Proyecto`) REFERENCES `proyecto` (`id`);
+  ADD CONSTRAINT `fk_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`id`),
+  ADD CONSTRAINT `fk_proyecto` FOREIGN KEY (`proyecto_id`) REFERENCES `proyecto` (`id`);
 
 --
 -- Filtros para la tabla `sesion`
