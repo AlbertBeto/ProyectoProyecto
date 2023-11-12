@@ -1,5 +1,7 @@
 <?php include_once("utiles.php");
 include_once("categoria_sql.php");
+include_once("mysql/db_access.php");
+$conn=open_connection();
 
 /*
 if(!isset($_COOKIE["user_email"])){
@@ -46,10 +48,10 @@ setcookie("user_email",1, time()+(86400*30), "/");
                 <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <!-- UD3.3.e Monto un foreach que recorre el array $categoriasMain y crea un link dentro del desplegable por cada campo -->   
+        <!-- UD5.4 5.4.a Utilizo en el foreach del desplegable la función para sacar todas las categorias. -->   
                 <?php foreach (get_categorias_all($conn) as $cat){  ?>
                     <a class="dropdown-item" href="#">
-                        <?php echo $cat ?>
+                        <?php echo $cat['nombre'] ?>
                     </a>
                         <?php } ?>                
                 </div>
@@ -112,7 +114,9 @@ setcookie("user_email",1, time()+(86400*30), "/");
                         >LOG OUT
                 </a>
             </li> 
-            <?php } ?>
+            <?php }
+            close_connection($conn);
+            ?>
 
         </ul>
     </header>
