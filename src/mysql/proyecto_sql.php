@@ -37,6 +37,7 @@ function get_proyectos_por_categoria($conn, $cat){
     return $consulta->fetchAll();
 }
 
+//UD5.3 5.3.d RA6.c Creo una función que ordena el listado de proyectos según ascendente o descendente y según por lo que queramos ordenar. 
 function get_proyectos_order_by($conn, $way, $ordenador){
     if($way=="ascendente"){
         $neoway="ASC";
