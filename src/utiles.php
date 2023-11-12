@@ -44,5 +44,10 @@ function test_input($data) {
     return $data;
     }
 
+    //UD5.3 5.3.g RA6.c De momento no la creo y paso a siguientes
+function get_user_logged_in(){
+
+}
+
 
 ?>
