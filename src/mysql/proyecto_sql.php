@@ -30,7 +30,7 @@ function get_proyecto_detail($conn, $proyecto_id){
 
 //UD5.3 5.3.c RA6.c Creo una función que devuelva proyectos segun categoria.
 function get_proyectos_por_categoria($conn, $cat){
-    $proyecto_por_categoria = "SELECT proyecto_id FROM categoria_proyecto WHERE categoria_id=$cat";
+    $proyecto_por_categoria = "SELECT pr.* FROM proyecto pr JOIN categoria_proyecto cp ON pr.id = cp.proyecto_id WHERE cp.categoria_id=$cat";
     $consulta = $conn->prepare($proyecto_por_categoria);
     $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
     $isOK = $consulta->execute();

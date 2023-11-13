@@ -1,7 +1,7 @@
 <?php
 
 function get_categorias_por_proyecto($conn, $proyecto_id){
-    $categorias_por_proyecto = "SELECT c.nombre 
+    $categorias_por_proyecto = "SELECT c.nombre, c.id 
                                 FROM categoria_proyecto cp, 
                                     categoria c 
                                 WHERE c.id = cp.categoria_id 
@@ -14,9 +14,9 @@ function get_categorias_por_proyecto($conn, $proyecto_id){
     return $consulta->fetchAll();
 }
 
-//UD5.3 5.3.b RA6.c Creo una función que devuelva todas las categorias.
+//UD5.3 5.3.b RA6.c Creo una función que devuelva el nombre y el id de todas las categorias.
 function get_categorias_all($conn){
-    $todas_las_categorias = "SELECT nombre 
+    $todas_las_categorias = "SELECT nombre, id 
     FROM categoria" ;
 $consulta = $conn->prepare($todas_las_categorias);
 $consulta->setFetchMode(PDO::FETCH_ASSOC);

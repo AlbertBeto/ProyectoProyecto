@@ -21,7 +21,8 @@ $proyecto = get_proyecto_detail($conn, $proyecto_id);
     <h2><?php echo utf8_encode($proyecto['titulo']) ?></h2>
     <span>Categorías: </span>
     <?php foreach(get_categorias_por_proyecto($conn, $proyecto['id']) as $categoria): ?>
-        <a href="#" class="badge bg-secondary"><?php echo utf8_encode($categoria['nombre'])?></a>
+         <!--UD5.4 5.4.b Linkeo las etiquetas de categoria a index con parametro -->
+        <a href="index.php?categoria=<?php echo $categoria['id']?>" class="badge bg-secondary"><?php echo utf8_encode($categoria['nombre'])?></a>
     <?php endforeach; ?>
     <br> <br>
     <div class="row">
