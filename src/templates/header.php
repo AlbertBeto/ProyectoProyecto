@@ -51,7 +51,7 @@ setcookie("user_email",1, time()+(86400*30), "/");
         <!-- UD5.4 5.4.a Utilizo en el foreach del desplegable la función para sacar todas las categorias. -->   
                 <?php foreach (get_categorias_all($conn) as $cat){  ?>
                      <!--UD5.4 5.4.b Linkeo las etiquetas de categoria a index con parametro -->
-                    <a class="dropdown-item" href="index.php?categoria=<?php echo $cat[♦'id'] ?>">
+                    <a class="dropdown-item" href="index.php?categoria=<?php echo $cat['id'] ?>">
                         <?php echo $cat['nombre'] ?>
                     </a>
                         <?php } ?>                
