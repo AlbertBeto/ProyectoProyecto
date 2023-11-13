@@ -7,16 +7,13 @@ $proyecto_id = $_GET['id'];
 }
 
 include("templates/header.php");
-include("mysql/db_credenciales.php");
-include("mysql/proyecto_sql.php");
-include("mysql/categoria_sql.php")
+include_once("mysql/db_credenciales.php");
+include_once("mysql/proyecto_sql.php");
+include_once("mysql/categoria_sql.php")
 ;
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    echo "La conexión ha fallado: " . $e->getMessage();
-}
+
+$conn=open_connection();
+
 $proyecto = get_proyecto_detail($conn, $proyecto_id);
 ?>
 
@@ -39,4 +36,4 @@ $proyecto = get_proyecto_detail($conn, $proyecto_id);
 </div>
 
 <?php include("templates/footer.php"); ?>
-<?php $conn = null; ?>
+<?php close_connection($conn); ?>
