@@ -1,7 +1,7 @@
 <?php
 
 function get_categorias_por_proyecto($conn, $proyecto_id){
-    $categorias_por_proyecto = "SELECT c.Nombre 
+    $categorias_por_proyecto = "SELECT c.nombre 
                                 FROM categoria_proyecto cp, 
                                     categoria c 
                                 WHERE c.id = cp.categoria_id 
