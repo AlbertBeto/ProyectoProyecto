@@ -2,7 +2,7 @@
 <?php include_once("mysql/db_credenciales.php"); ?>
 <?php include_once("mysql/proyecto_sql.php"); ?>
 <?php //include_once("mysql/categoria_sql.php"); ?>
-<?php //UD5.2 5.2.1 RA6.b doy acceso a la web con las funciones para conectar y desconectar la BD
+<?php //UD5.2 5.2.1 RA6.b doy acceso a la web con las funciones para conectar y desconectar la BD pero las cargo en header.
 //include_once("mysql/db_access.php");
 
 
