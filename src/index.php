@@ -25,11 +25,17 @@ $proyectosTry = is_null($categoria_id)? get_proyectos_all($conn) : get_proyectos
 <div> 
 <br>     
 <button onclick="location.href='index.php'" type="button">
-         Up</button>
+         Ascendente Nombre</button>
 
          <button onclick="location.href='index.php'" type="button">
-         Down</button>
+         Descendente Nombre</button>
          <br>
+<button onclick="location.href='index.php'" type="button">
+        Ascendente Fecha</button>
+
+        <button onclick="location.href='index.php'" type="button">
+        Descendente Fecha</button>
+        <br>
 </div>
 
 <?php
