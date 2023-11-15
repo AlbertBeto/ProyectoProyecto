@@ -49,9 +49,6 @@ function get_proyectos_order_by($conn, $way, $ordenador){
     $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
     $isOK = $consulta->execute();
     return $consulta->fetchAll();
-
-
-    
 }
 
 ?>

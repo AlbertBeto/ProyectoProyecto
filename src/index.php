@@ -14,6 +14,23 @@ $proyectosTry = is_null($categoria_id)? get_proyectos_all($conn) : get_proyectos
   
 ?>
 
+<div>
+    <!--UD4 4.2.a RA3.e  Creo un boton en index que lleve a la página formulario_proyectos-->  
+    <?php  if (isset($_SESSION["user_email"])) { ?>  
+<button onclick="location.href='formulario_proyectos.php'" type="button">
+         Crear proyecto</button>
+         <?php } ?>
+</div>     
+<!-- 3.2.f Monto dos botones para que carguen direcciones diferentes por el valor del sort. -->
+<div> 
+<br>     
+<button onclick="location.href='index.php'" type="button">
+         Up</button>
+
+         <button onclick="location.href='index.php'" type="button">
+         Down</button>
+         <br>
+</div>
 
 <?php
 //UD5.2 5.2.1 RA6.b creo la variable $conn llamando a la funcion de crear conexión.
