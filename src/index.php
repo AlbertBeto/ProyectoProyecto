@@ -10,8 +10,14 @@
 $categoria_id = $_GET['categoria'];
 //UD5.4 5.4.b Creo un if que dependiendo si hay valor o no en el parametro categoria
 //carga un listado de proyectos completo o reducido por categoria
+//$proyectosTry = is_null($categoria_id)? get_proyectos_all($conn) : get_proyectos_por_categoria($conn, $categoria_id);
 $proyectosTry = is_null($categoria_id)? get_proyectos_all($conn) : get_proyectos_por_categoria($conn, $categoria_id);
   
+if(is_null($categoria_id)){
+    
+}
+
+
 ?>
 
 <div>
@@ -21,7 +27,7 @@ $proyectosTry = is_null($categoria_id)? get_proyectos_all($conn) : get_proyectos
          Crear proyecto</button>
          <?php } ?>
 </div>     
-<!-- 3.2.f Monto dos botones para que carguen direcciones diferentes por el valor del sort. -->
+<!-- 3.2.f Monto dos juegos de botones para que carguen direcciones diferentes por el valor del sort. -->
 <div> 
 <br>     
 <button onclick="location.href='index.php'" type="button">

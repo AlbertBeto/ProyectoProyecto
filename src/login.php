@@ -38,12 +38,7 @@ if ($emailErr === "" && $passwordErr === "") {
             "password" => $password,
             ];
 
-            //Aqui cargamos el json del archivo en la variable array temporal .
-           // $tempArray = json_decode(file_get_contents('mysql/usuario.json'), true);
-            //Esto es por si el json está vacio NULL que cree un array vacio. 
-            if ($tempArray === NULL){
-                $tempArray = [];
-           }
+           
            //Aqui hacemos la comparativa con un foreach del array creado con el json.
            // 4.1.c Cada user lo comprobamos con el email recibido y comprobamos el pass tambien. 
            foreach ($tempArray as $user){
