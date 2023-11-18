@@ -37,7 +37,7 @@ function get_proyectos_por_categoria($conn, $cat){
     return $consulta->fetchAll();
 }
 
-//UD5.3 5.3.d RA6.d Creo una función que ordena el listado de proyectos según ascendente o descendente y según por lo que queramos ordenar. 
+//UD5.3 5.3.d RA6.d y //UD5.4 5.4.b Creo una función que ordena el listado de proyectos según ascendente o descendente y según por lo que queramos ordenar. 
 function get_proyectos_order_by($conn,$param){
     //Cojo los 3 últimos caracteres de param que son los parametros de la url y segun el valor
     //se lo doy a way. 
@@ -59,7 +59,7 @@ function get_proyectos_order_by($conn,$param){
     return $consulta->fetchAll();
 }
 
-//UD5.3 5.3.d RA6.d Creo una función que ordena el listado de proyectos según ascendente o descendente y según por lo que queramos ordenar. 
+//UD5.3 5.3.d RA6.d y //UD5.4 5.4.b Creo una función que ordena el listado de proyectos según ascendente o descendente y según por lo que queramos ordenar. 
 //Y mantiene la selección de categorias. 
 function get_proyectos_por_categoria_ordenado($conn, $cat, $param){
     //Cojo los 3 últimos caracteres de param que son los parametros de la url y segun el valor
