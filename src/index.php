@@ -8,14 +8,16 @@
 
 //UD5.4 5.4.b Leo el parametro categoria de la url
 $categoria_id = $_GET['categoria'];
+$order_set = $_GET['order'];
 //UD5.4 5.4.b Creo un if que dependiendo si hay valor o no en el parametro categoria
 //carga un listado de proyectos completo o reducido por categoria
 //$proyectosTry = is_null($categoria_id)? get_proyectos_all($conn) : get_proyectos_por_categoria($conn, $categoria_id);
-$proyectosTry = is_null($categoria_id)? get_proyectos_all($conn) : get_proyectos_por_categoria($conn, $categoria_id);
-  
-if(is_null($categoria_id)){
-    
-}
+$proyectosTry = null;
+
+if(is_null($categoria_id) & is_null($order_set)) {$proyectosTry =get_proyectos_all($conn);}
+    elseif(!is_null($categoria_id) & is_null($order_set)) {$proyectosTry =get_proyectos_por_categoria($conn, $categoria_id);}
+    elseif(is_null($categoria_id) & !is_null($order_set)) {$proyectosTry =get_proyectos_order_by($conn,$order_set);}
+    elseif(!is_null($categoria_id) & !is_null($order_set)) {$proyectosTry =get_proyectos_por_categoria_ordenado($conn, $categoria_id,$order_set);};
 
 
 ?>
@@ -30,16 +32,16 @@ if(is_null($categoria_id)){
 <!-- 3.2.f Monto dos juegos de botones para que carguen direcciones diferentes por el valor del sort. -->
 <div> 
 <br>     
-<button onclick="location.href='index.php'" type="button">
+<button onclick="location.href='index.php?<?php if($categoria_id!==null)echo 'categoria='.$categoria_id.'&'; ?>order=nomasc'" type="button">
          Ascendente Nombre</button>
 
-         <button onclick="location.href='index.php'" type="button">
+<button onclick="location.href='index.php?<?php if($categoria_id!==null)echo 'categoria='.$categoria_id.'&'; ?>order=nomdes'" type="button">
          Descendente Nombre</button>
          <br>
-<button onclick="location.href='index.php'" type="button">
+<button onclick="location.href='index.php?<?php if($categoria_id!==null)echo 'categoria='.$categoria_id.'&'; ?>order=fecasc'" type="button">
         Ascendente Fecha</button>
 
-        <button onclick="location.href='index.php'" type="button">
+<button onclick="location.href='index.php?<?php if($categoria_id!==null)echo 'categoria='.$categoria_id.'&'; ?>order=fecdes'" type="button">
         Descendente Fecha</button>
         <br>
 </div>

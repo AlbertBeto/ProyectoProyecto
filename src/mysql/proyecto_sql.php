@@ -38,14 +38,21 @@ function get_proyectos_por_categoria($conn, $cat){
 }
 
 //UD5.3 5.3.d RA6.c Creo una función que ordena el listado de proyectos según ascendente o descendente y según por lo que queramos ordenar. 
-function get_proyectos_order_by($conn, $way, $ordenador){
-    if($way=="ascendente"){
-        $neoway="ASC";
-    }else if($way=="descendente"){
-        $neoway="DES";
-    };
-    $proyecto_ordenado_por = "SELECT * FROM proyecto order by $ordenador $neoway";
+function get_proyectos_order_by($conn,$param){
+    $way=substr($param,3,3);
+    $ordenador=substr($param,0,3);
+    $proyecto_ordenado_por = "SELECT * FROM proyecto order by $ordenador $way";
     $consulta = $conn->prepare($proyecto_ordenado_por);
+    $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
+    $isOK = $consulta->execute();
+    return $consulta->fetchAll();
+}
+
+function get_proyectos_por_categoria_ordenado($conn, $cat, $param){
+    $way=substr($param,3,3);
+    $ordenador=substr($param,0,3);
+    $proyecto_por_categoria = "SELECT pr.* FROM proyecto pr JOIN categoria_proyecto cp ON pr.id = cp.proyecto_id WHERE cp.categoria_id=$cat order by $ordenador $way";
+    $consulta = $conn->prepare($proyecto_por_categoria);
     $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
     $isOK = $consulta->execute();
     return $consulta->fetchAll();
