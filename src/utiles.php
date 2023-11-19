@@ -1,5 +1,8 @@
-<?php ?>
 <?php 
+include_once ("mysql/usuario_sql.php");
+include_once("mysql/db_access.php");
+
+
 //Cambio la posición de a por b para que lo ordene de menor a mayor
 function ordenaTituloProyectoDesc($b, $a){
 return strcmp($b['titulo'],$a['titulo']);
@@ -42,11 +45,27 @@ function test_input($data) {
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
-    }
+}
 
-    //UD5.3 5.3.g RA6.c De momento no la creo y paso a siguientes
+    //UD5.3 5.3.g RA6.c Creo una estructura de ifs y creo un par de funciones de busquedas en la BD en 
+    //usuario_sql.php como get_usuario_completo y get_usuario_sesiones.
+    //Resumiendo confirma que el la cookies exista, que el email de la cookie existe en la base de datos
+    //que el usuario tiene una sesion abierta en la bd  y por último que se admi si falla alguna devuelve false.   
 function get_user_logged_in(){
-
+    $conn=open_connection();
+    if (isset($_COOKIE["user_email"])) {
+        $email=$_COOKIE["user_email"];
+        if(!is_null(get_existe_usuario($conn, $email))){
+            $usuario=get_usuario_completo($conn, $email);
+            if(!is_null(get_usuario_sesiones($conn,$usuario["id"]))){
+                if($usuario["Admin"]==1){
+                    return true;
+                }else{return false;};
+                
+            }else{return false;};
+        }else{return false;};
+    }else{return false;};
+    close_connection($conn);
 }
 
 

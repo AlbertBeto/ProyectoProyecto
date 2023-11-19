@@ -1,5 +1,4 @@
 <?php include_once ("utiles.php");
-include_once("datos.php");
 // UD4.3 RA4.a 4.3.4.a Decido usar las cookies de sesion ya que aportan más seguridad al gestionar los datos desde el servidor, evitar que 
 //un usuario modifiue los datos de la cookie persistente o cierre el navegador sin desloguear y sobre todo con la gestión de los datos del usuario
 // aunque den mas carga de recursos en el sevidor. 
@@ -58,42 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         }
 }
-/*
-//Copio el bloque creado en formulario_mod_proyecto.php para la modificación del array.
-//NO FUNCIONA pero ya tengo el bloque aquí para modificarlo una vez se detect y solucione el error. 
-if ($claveErr === "" && $tituloErr === "" && $fechaproyectErr === "" && $descripcionProyectoErr === "") {
-            
-            $neoproyecto = [
-            "clave" => $clave,
-            "titulo" => $titulo,
-            "descripcion" => $descripcionProyecto,
-            "imagen" => $pathArchivo,
-            "categorias" => [],
-            "fecha" => $fechaproyect
-            ];
 
-            // UD4.2 RA3.e 4.2.e Esta es la zona en un principio guardariamos el array modifficado pero no funciona. 
-            
-            if($posicion!==""){
-                $proyectos[$posicion]=$neoproyecto;
-            }
-            
-                //metemos en un array y lo codificamos en json
-            $proyectos_json = json_encode($proyectos);
-                //Aqui guarda el nuevo array otra vez en el archivo
-            file_put_contents('mysql/proyecto1.json', $proyectos_json);
-            
-            ?>
-                <!-- Ahora sale del minibucle del php realiza el salto de web a la pagina
-                de confirmación y acaba de cerrarlo todo.   -->
-        <script type="text/javascript">
-            // UD4.2 RA3.e 4.2.f damos valor a id en la url usando la clave
-        window.location = "/confirma_proyecto.php?id=<?php echo $clave ?>";
-        console.log($proyectos)
-        </script>
-   <?php
-        }
-*/
     ?>
 <?php include("templates/header.php"); 
 // UD4.3 RA4.c 4.3.4.c Aquí recuperamos la variable se la sesion
