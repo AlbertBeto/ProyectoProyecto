@@ -26,7 +26,7 @@ if(is_null($categoria_id) & is_null($order_set)) {$proyectosTry =get_proyectos_a
 
 <div>
     <!--UD4 4.2.a RA3.e  Creo un boton en index que lleve a la página formulario_proyectos-->  
-    <?php  if (isset($_SESSION["user_email"])) { ?>  
+    <?php  if (isset($_COOKIE["user_email"])) { ?>  
 <button onclick="location.href='formulario_proyectos.php'" type="button">
          Crear proyecto</button>
          <?php } ?>
@@ -49,7 +49,7 @@ Y manteniedo por php si hay parametro categoria y si es el caso manteniendolo.  
         Descendente Fecha</button>
         <br>
 </div>
-
+<br>
 <?php
 //UD5.2 5.2.1 RA6.b creo la variable $conn llamando a la funcion de crear conexión.
 $conn=open_connection();

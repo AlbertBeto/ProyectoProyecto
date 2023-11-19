@@ -3,7 +3,7 @@
 include("templates/header.php"); ?>
 
 <?php
-    $contactosLista = json_decode(file_get_contents('mysql/contactos.json'), true);
+    //$contactosLista = json_decode(file_get_contents('mysql/contactos.json'), true);
 ?>
 
 <div class="container mb-5">

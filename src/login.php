@@ -1,4 +1,7 @@
-<?php include_once ("utiles.php");?>
+<?php include_once ("utiles.php");
+include_once ("mysql/usuario_sql.php");
+include_once("mysql/db_access.php");
+?>
 <?php
 $email = $password = '';
 $emailErr = $passwordErr = '';
@@ -30,55 +33,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         }
 }
-//UD4 4.1.b Creo el comprobador de usuario y contraseña comparando con un JSON.
+
+
+$conn=open_connection();
+
+//UD4 4.1.b Creo el comprobador de usuario y contraseña
 //Si las variables de error estan vacias crea el array loger con el email y el pass introducidos.
 if ($emailErr === "" && $passwordErr === "") {
-            $loger = [
-            "email" => $email,
-            "password" => $password,
-            ];
-
+    $loger = [
+    "email" => $email,
+    "password" => $password,
+    ];
+  
+    if(!empty($loger["email"])&$loger["email"]!==''){
+  //Aquí creo dos variables con el return de las funciones que buscan password y email en la base de datos con el email.   
+   $confirmuser = get_existe_usuario($conn, $loger["email"]);     
+   $confirmpass = get_credenciales_usuario($conn, $loger["email"]);
+   
+    //El primer if es para confirmar que el email existe en la BD. En caso q no devuelve un mensaje en la casilla de email. 
+    if($confirmuser==$loger["email"]){
+        //Segundo if donde confirmamos que el password introducido es el mismo que el que nos ha devuelto la BD con la fuinción. En caso que no devuelve un mensaje en la casilla de password
+        if($confirmpass==$loger["password"]){
+            //Aqui creo la cookie, le doy valor y tiempo de existencia de 30 días.  
+            setcookie("user_email", $loger["email"], time()+(86400*30), "/");
+            //$_COOKIE["user_email"] = $loger["email"];
            
-           //Aqui hacemos la comparativa con un foreach del array creado con el json.
-           // 4.1.c Cada user lo comprobamos con el email recibido y comprobamos el pass tambien. 
-           foreach ($tempArray as $user){
-            if($user["email"]===$loger["email"]){ 
-                if($user["password"]===$loger["password"]){
-                    // RA4.c 4.1.e Si todo es correcto creamos la cookie con el valor del email
-                    // y luego saltamos a la nueva web
-                    setcookie("user_email", $loger["email"], time()+(86400*30), "/");
-                    //procedo a cambiarlo a cookies de sesión.
-                    
-                    $_COOKIE["user_email"] = $loger["email"];
-                   
-                    ?>
-                <script type="text/javascript">
-                     window.location = "/contacto_lista.php";
-                </script>
-                <?php
+            ?>
+        <!--Aqui saltamos al a pagina contacto_lista.php -->
+        <script type="text/javascript">
+             window.location = "/contacto_lista.php";
+        </script>
+        
+        <?php
+        
+     
+        }else{
+            $passwordErr = "La contraseña introducida es erronea.";
+            }
+    
+     
+    }else{
+        $emailErr = "El usario introducido es erroneo.";
+        }
 
-                //UD4 4.1.d aquí si el password no es correcto hacemos salir el error rojo
-                // y ponemos el break para salir del buble y que no salga el error rojo 
-                // con los siguientes users del array. 
-                }else{
-                    $passwordErr = "El password introducido es erroneo.";
-                    break;
-                }
-                
-                // UD4 4.1.d Aquí comprobamos si está la etiqueta vacia para 
-                //evitar el salte el error al estar vacio.
-            } elseif($loger["email"]==''){
-                $emailErr = '';
-               // UD4 4.1.d Y aquí damos el error si no es está correcto y no está vacio. 
-            }else{
-                $emailErr = "El usuario introducido es erroneo.";
-                 }
-            //Esta es la llave del foreach
-           }
-//Esta es la llave del if principal de los errores. 
-}
+}}
+
     ?>
 <?php include("templates/header.php"); 
+
+
 ?>
 <!-- UD4 4.1 Monto la página login.php 
 creo las variables para almacenar los datos,
@@ -88,6 +91,9 @@ Y muy importante los meto en los campos post creados -->
 <!-- UD4 4.1 Aquí creo los formularios y el boton de enviar.
 Con PHP hago que se repita el texto introducido en caso de error.
 Y en caso de error sale en texto rojo el mensaje de error. -->
+
+
+
 
 <div class="container">
     <h2 class="mb-5">Login</h2>
@@ -119,3 +125,5 @@ Y en caso de error sale en texto rojo el mensaje de error. -->
 
 </div>
 <?php include("templates/footer.php"); ?>
+<?php //UD5.2 5.2.1 RA6.b llamo a la función cerrar conexión y le doy los datos de la conexión y esta procede a cerrar la conn.
+close_connection($conn); ?>

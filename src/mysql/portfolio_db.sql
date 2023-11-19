@@ -165,8 +165,8 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `e-mail`, `password`, `NombreApellidos`, `DNI`, `Activo`, `Admin`) VALUES
-(1, 'albert@ggg.com', 'Albert78', 'Albert Perez Baleyto', '38111111E', 1, 0),
+INSERT INTO `usuario` (`id`, `email`, `passwordW`, `NombreApellidos`, `DNI`, `Activo`, `Admin`) VALUES
+(1, 'albert@ggg.com', 'Albert78', 'Albert Perez Baleyto', '38111111E', 1, 1),
 (2, 'cristi@ggg.com', 'Cristi78', 'Cristina B B', '38444555t', 1, 0),
 (3, 'mai@ggg.com', 'Mai45678', 'Mai Mai B', '48666777J', 1, 0);
 
