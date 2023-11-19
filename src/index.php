@@ -8,12 +8,12 @@
 
 //UD5.4 5.4.b Leo el parametro categoria de la url
 $categoria_id = $_GET['categoria'];
-//UD5.4 5.4.d RA6.d Leo el parametro order de la url
+//UD5.4 5.4.c RA6.d Leo el parametro order de la url
 $order_set = $_GET['order'];
 //UD5.4 5.4.b Creo un if que dependiendo si hay valor o no en el parametro categoria
 //carga un listado de proyectos completo o reducido por categoria
 //$proyectosTry = is_null($categoria_id)? get_proyectos_all($conn) : get_proyectos_por_categoria($conn, $categoria_id);
-//UD5.4 5.4.d RA6.d Creo una variable null a la que le doy valor según la lectura de los parametros entregados por url
+//UD5.4 5.4.c RA6.d Creo una variable null a la que le doy valor según la lectura de los parametros entregados por url
 // y usados en las funciónes. dependiendo el valor de las lecturas. 
 $proyectosTry = null;
 if(is_null($categoria_id) & is_null($order_set)) {$proyectosTry =get_proyectos_all($conn);}
@@ -31,7 +31,7 @@ if(is_null($categoria_id) & is_null($order_set)) {$proyectosTry =get_proyectos_a
          Crear proyecto</button>
          <?php } ?>
 </div>     
-<!-- //UD5.4 5.4.d RA6.d Monto dos juegos de botones para que carguen direcciones diferentes por el valor del sort.
+<!-- //UD5.4 5.4.c RA6.d Monto dos juegos de botones para que carguen direcciones diferentes por el valor del sort.
 Y manteniedo por php si hay parametro categoria y si es el caso manteniendolo.  -->
 <div> 
     
@@ -61,7 +61,8 @@ $conn=open_connection();
    <?php //UD5.4 5.4.b RA6.d Aquí utilizo la variable a la que le he dado valor de las busqueadas sql de las funciones segun el valor de los paremetros de la url. 
    foreach($proyectosTry as $proyecto): ?>
        <div class="col-sm-3">
-           <a href="proyecto.php?id=<?php echo $proyecto['id']?>" class="p-5">
+          <!-- <a href="proyecto.php?id=<?php echo $proyecto['id']?>" class="p-5"> -->
+           <a href="<?php if(isset($_COOKIE["user_email"])){?>formulario_mod_proyecto.php?id=<?php echo $proyecto['id'];}else{?>proyecto.php?id=<?php echo $proyecto['id'];}?>" class="p-5">
                <div class="card">
                    <img class="card-img-top" src="<?php echo (($proyecto['imagen']!=NULL) ? $proyecto['imagen']  : "/static/images/picture-not-available.jpg");?> "alt="<?php echo utf8_encode($proyecto['titulo'])?> ">
                    <div class="card-body">
