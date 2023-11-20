@@ -10,7 +10,10 @@ function get_usuario_sesiones($conn, $id){
     return $consulta->fetchColumn();
 }
 
-//UD5.5 5.5.a RA6.e 
+//UD5.5 5.5.a RA6.e Aqui m e he flipado un poco... ya que queria que las nuevas sesiones se guardaran aprovechando los agujeros en la lista
+// no queria una mega lista de sesiones son simplemente decir length+1. Con lo que he creado un par de funciones para saber los espacios vacios en la lista de 
+//sesiones y si no hay agujeros que ponga la nueva sesion al final. 
+//Primero creo una variable que devuelve todas las sesiones en la tabla sesion
 
 function todas_las_sesiones($conn){
     $all_seasons = "SELECT id FROM sesion";
@@ -24,6 +27,7 @@ function todas_las_sesiones($conn){
     }else{return $consulta;}
 }
 
+//UD5.5 5.5.a RA6.e En esta funcion cojo el listado de sesiones y miro si hay huecos libres entre los ids de sesion. 
 function encontrar_faltantes($sesiones){
     //Aquí saco el número mas alto almacenado en el array $sesiones
     $maximo = max($sesiones);
@@ -38,9 +42,13 @@ function encontrar_faltantes($sesiones){
         return min($puestos_vacios);}
 }
 
+//UD5.5 5.5.a RA6.e Esta es la funcion principal para crear sesiones en la tabla sesion y donde uso las funciones anteriores.
 function new_sesion($conn,$id_usuario){
+    //Primeor saco un listado con todas las sesiones.
     $listado_sesiones = todas_las_sesiones($conn);
+    //Paso el listado por el busca huecos que me devuelve la posición correcta. 
     $posicion_id_sesion = encontrar_faltantes($listado_sesiones);
+    //Aqui monto el query diciendole qué y donde tiene que meter los datos en la tabla sesion. 
     $nueva_sesion = "INSERT INTO sesion (id, usuario) VALUES ($posicion_id_sesion, $id_usuario)";
     $consulta = $conn->prepare($nueva_sesion);
     $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
