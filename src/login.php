@@ -1,5 +1,6 @@
 <?php include_once ("utiles.php");
 include_once ("mysql/usuario_sql.php");
+include_once ("mysql/sesion_sql.php");
 include_once("mysql/db_access.php");
 ?>
 <?php
@@ -56,7 +57,12 @@ if ($emailErr === "" && $passwordErr === "") {
         if($confirmpass==$loger["password"]){
             //Aqui creo la cookie, le doy valor y tiempo de existencia de 30 días.  
             setcookie("user_email", $loger["email"], time()+(86400*30), "/");
-            //$_COOKIE["user_email"] = $loger["email"];
+
+            //UD5.5 5.5.a RA6.e 
+            if(get_user_logged_in()){
+                $id_usuario=get_id_usuario($conn, $loger["email"]);
+                new_sesion($conn,$id_usuario);
+            };
            
             ?>
         <!--Aqui saltamos al a pagina contacto_lista.php -->
@@ -80,8 +86,7 @@ if ($emailErr === "" && $passwordErr === "") {
 
     ?>
 <?php include("templates/header.php"); 
-
-
+echo $id_usuario;
 ?>
 <!-- UD4 4.1 Monto la página login.php 
 creo las variables para almacenar los datos,

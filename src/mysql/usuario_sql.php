@@ -30,11 +30,10 @@ function get_usuario_completo($conn, $email){
     return $consulta->fetchAll();
 }
 
-//UD5.3 5.3.g RA6.c Las creo para busquedas en la BD para usarlas en la función de confirmación desesion y admin de un usuario.
-//En esta con un id de usuario vemos si tiene una sesion creada. 
-function get_usuario_sesiones($conn, $id){
-    $usuario_completo = "SELECT id FROM sesion WHERE usuario='$id'";
-    $consulta = $conn->prepare($usuario_completo);
+//UD5.5 5.5.a RA6.e 
+function get_id_usuario($conn, $email){
+    $id_usuario = "SELECT id FROM usuario WHERE email='$email'";
+    $consulta = $conn->prepare($id_usuario);
     $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
     $isOK = $consulta->execute();
     return $consulta->fetchColumn();

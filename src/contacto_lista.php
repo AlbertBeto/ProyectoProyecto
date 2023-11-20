@@ -1,9 +1,14 @@
 <?php 
  
-include("templates/header.php"); ?>
+include("templates/header.php");
+include_once ("mysql/sesion_sql.php");
+include_once("mysql/db_access.php");
+?>
 
 <?php
-    //$contactosLista = json_decode(file_get_contents('mysql/contactos.json'), true);
+$conn=open_connection();
+//UD5.5 5.5.a RA6.e 
+    echo ("ostias".get_usuario_sesiones($conn, 1));
 ?>
 
 <div class="container mb-5">
@@ -23,4 +28,6 @@ include("templates/header.php"); ?>
     <?php } ?>
 </div>
 
-<?php include("templates/footer.php"); ?>
+<?php include("templates/footer.php");
+close_connection($conn);
+ ?>
