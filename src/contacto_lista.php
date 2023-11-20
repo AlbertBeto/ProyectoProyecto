@@ -7,8 +7,7 @@ include_once("mysql/db_access.php");
 
 <?php
 $conn=open_connection();
-//UD5.5 5.5.a RA6.e 
-    echo ("ostias".get_usuario_sesiones($conn, 1));
+
 ?>
 
 <div class="container mb-5">
