@@ -56,6 +56,17 @@ function new_sesion($conn,$id_usuario){
 
 }
 
+//UD5.5 5.5.b RA6.e Función en la que recibe conexión y email y borra en la base de datos la sesion del usuario. 
+function delete_sesion($conn,$email){
+    //Consigo el id del usuario con función
+    $id_usuario_delete = get_id_usuario($conn, $email);
+    //query donde borro linea en la tabla sesion donde usuario se igual a la id de usuario previamente guardad
+    $borra_sesion = "DELETE FROM sesion WHERE usuario = $id_usuario_delete";
+    $consulta = $conn->prepare($borra_sesion);
+    $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
+    $isOK = $consulta->execute();
+}
+
 
 
 ?>
