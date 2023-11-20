@@ -57,13 +57,11 @@ if ($emailErr === "" && $passwordErr === "") {
         if($confirmpass==$loger["password"]){
             //Aqui creo la cookie, le doy valor y tiempo de existencia de 30 días.  
             setcookie("user_email", $loger["email"], time()+(86400*30), "/");
-
-            //UD5.5 5.5.a RA6.e 
-            if(get_user_logged_in()){
-                $id_usuario=get_id_usuario($conn, $loger["email"]);
-                new_sesion($conn,$id_usuario);
-            };
-           
+            //UD5.5 5.5.a RA6.e Primero me guardo en variable la id del usuario y luego con new season y la id creo sesion en la BD
+            $id_usuario=get_id_usuario($conn, $loger["email"]);
+            new_sesion($conn,$id_usuario);
+            
+            
             ?>
         <!--Aqui saltamos al a pagina contacto_lista.php -->
         <script type="text/javascript">
