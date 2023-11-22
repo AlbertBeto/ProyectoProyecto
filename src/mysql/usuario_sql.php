@@ -39,10 +39,17 @@ function get_id_usuario($conn, $email){
     return $consulta->fetchColumn();
 }
 
-//Falta escribir la query---
+///UD5.6 5.6.f RA6.f Creo función para modificar los campos de la tabla usuario 
 function update_usuario($conn,$neoUsuario){
-    //query donde borro linea en la tabla sesion donde usuario se igual a la id de usuario previamente guardad
-    $update_usuario = "INSERT INTO usuario (id, usuario) VALUES ($posicion_id_sesion, $id_usuario)";
+    //Para evitar errores paso los datos del usuario a variables internas de la función.     
+    $email = $neoUsuario['email'];
+    //Utilizo la función get_id_usuario basandome en el email. 
+    $id = get_id_usuario($conn, $email);
+    $password = $neoUsuario['password'];
+    $nombreapellido = $neoUsuario['nombreapellido'];
+    $dni = $neoUsuario['dni'];
+    //Escribo el query para modificar los campos de la tabla usuario usando los datos del nuevo usuario. 
+    $update_usuario = "UPDATE usuario SET email='$email', passwordW='$password', NombreApellidos='$nombreapellido', DNI='$dni' WHERE id=$id";
     $consulta = $conn->prepare($update_usuario);
     $isOK = $consulta->execute();
     $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);

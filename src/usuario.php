@@ -69,6 +69,12 @@ if ($emailErr === "" && $passwordErr === "" && $nombreapellidoErr === "" && $dni
         "dni" => $dni,
         "password" => $password
     ];
+    ///UD5.6 5.6.f RA6.f Aquí compruebo que si se ha enviado el submit a esta misma pagina y despues de la comprobación de errores
+    // y la construcción de neoUser activo la función de updatear el usuario.  
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        update_usuario($conn,$neoUser);
+    }
+
 }
 
     ?>
