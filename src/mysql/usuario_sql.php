@@ -39,6 +39,14 @@ function get_id_usuario($conn, $email){
     return $consulta->fetchColumn();
 }
 
-
+//Falta escribir la query---
+function update_usuario($conn,$neoUsuario){
+    //query donde borro linea en la tabla sesion donde usuario se igual a la id de usuario previamente guardad
+    $update_usuario = "INSERT INTO usuario (id, usuario) VALUES ($posicion_id_sesion, $id_usuario)";
+    $consulta = $conn->prepare($update_usuario);
+    $isOK = $consulta->execute();
+    $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
+    
+}
 
 ?>

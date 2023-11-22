@@ -18,17 +18,18 @@ function get_usuario_sesiones($conn, $id){
 function todas_las_sesiones($conn){
     $all_seasons = "SELECT id FROM sesion";
     $consulta = $conn->prepare($all_seasons);
-    $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
     $isOK = $consulta->execute();
-    $consulta->fetchAll();
+    $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
     //Si $consulta vuelve null pq no hay ninguna conexion devuelvo el valor de un array con un 1 dentro. 
-    if(is_null($consulta)){
+    if(empty($resultado)){
         return [1];
-    }else{return $consulta;}
+    }else{return $resultado;}
 }
 
 //UD5.5 5.5.a RA6.e En esta funcion cojo el listado de sesiones y miro si hay huecos libres entre los ids de sesion. 
 function encontrar_faltantes($sesiones){
+    //Ordeno el array de sesiones
+    sort($sesiones);
     //Aquí saco el número mas alto almacenado en el array $sesiones
     $maximo = max($sesiones);
     //Creo un array desde el cero hasta el número maximo del array $sesiones.
@@ -51,8 +52,9 @@ function new_sesion($conn,$id_usuario){
     //Aqui monto el query diciendole qué y donde tiene que meter los datos en la tabla sesion. 
     $nueva_sesion = "INSERT INTO sesion (id, usuario) VALUES ($posicion_id_sesion, $id_usuario)";
     $consulta = $conn->prepare($nueva_sesion);
-    $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
     $isOK = $consulta->execute();
+    $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
+    
 
 }
 

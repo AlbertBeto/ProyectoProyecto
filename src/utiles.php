@@ -57,8 +57,8 @@ function get_user_logged_in(){
         $email=$_COOKIE["user_email"];
         if(!is_null(get_existe_usuario($conn, $email))){
             $usuario=get_usuario_completo($conn, $email);
-            if(!is_null(get_usuario_sesiones($conn,$usuario["id"]))){
-                if($usuario["Admin"]==1){
+            if(!is_null(get_usuario_sesiones($conn,$usuario[0]["id"]))){
+                if($usuario[0]["Admin"]==1){
                     return true;
                 }else{return false;};
                 

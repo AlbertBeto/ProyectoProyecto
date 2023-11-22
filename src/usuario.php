@@ -1,4 +1,7 @@
 <?php include_once ("utiles.php");
+include_once ("mysql/sesion_sql.php");
+include_once("mysql/db_access.php");
+include_once ("mysql/usuario_sql.php");
 // UD4.3 RA4.a 4.3.4.a Decido usar las cookies de sesion ya que aportan más seguridad al gestionar los datos desde el servidor, evitar que 
 //un usuario modifiue los datos de la cookie persistente o cierre el navegador sin desloguear y sobre todo con la gestión de los datos del usuario
 // aunque den mas carga de recursos en el sevidor. 
@@ -6,11 +9,11 @@
 
 <?php
 $email = $password = $nombreapellido = $dni = '';
-$emailErr = $passwordErr = $nombreapellidoErr = $dniErr ='';
+$emailErr = $passwordErr = $nombreapellidoErr = $dniErr = $passwordErr ='';
 $posicion = "";
 $session_value = "";
 
-
+$conn=open_connection();
 
 
 
@@ -58,17 +61,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 }
 
+if ($emailErr === "" && $passwordErr === "" && $nombreapellidoErr === "" && $dniErr === "") {
+
+    $neoUser = [
+        "email" => $email,
+        "nombreapellido" => $nombreapellido,
+        "dni" => $dni,
+        "password" => $password
+    ];
+}
+
     ?>
 <?php include("templates/header.php"); 
 // UD4.3 RA4.c 4.3.4.c Aquí recuperamos la variable se la sesion
 // UD4.3 RA4.f 4.3.4.f almacenamos su posición dentro del array de usuarios que tenemos en datos.php
 $session_value = $_COOKIE["user_email"];   
-foreach($usuarios as $key => $userrun){
-    if($userrun["email"]===$session_value){
-    $posicion = $key;
-    break;
-    }
-};
+
+$usuario=get_usuario_completo($conn, $session_value);
 
 ?>
 <div class="container">
@@ -80,7 +89,7 @@ foreach($usuarios as $key => $userrun){
                 <div class="row">
                     <label for="emailID" class="form-label">Email</label>
                     <!--  UD4.3 RA4.f 4.3.4.f  en el value del input de este y de los demas usamos la posición almacenada para cargar la info del array usuarios de datos.php-->
-                    <input type="text" name="email" value="<?php echo $usuarios[$posicion]["email"];?>" class="form-control" id="emailID"
+                    <input type="text" name="email" value="<?php echo $usuario[0]["email"];?>" class="form-control" id="emailID"
                     placeholder="Introduzca su email" >
                     <span class="text-danger"> <?php echo $emailErr ?> </span>
                 </div>
@@ -89,7 +98,7 @@ foreach($usuarios as $key => $userrun){
             <div class="mb-3 col-sm-6 p-0">
                 <div class="row">
                     <label for="nombreapellidoID" class="form-label">Nombre y apellidos</label>
-                    <input type="text" name="nombreapellido" value="<?php echo $usuarios[$posicion]["nombreapellido"];?>" class="form-control" id="nombreapellidoID"
+                    <input type="text" name="nombreapellido" value="<?php echo $usuario[0]["NombreApellidos"];?>" class="form-control" id="nombreapellidoID"
                     placeholder="Introduzca su nombre y sus dos apellidos" >
                     <span class="text-danger"> <?php echo $nombreapellidoErr ?> </span>
                 </div>
@@ -98,7 +107,7 @@ foreach($usuarios as $key => $userrun){
             <div class="mb-3 col-sm-6 p-0">
                 <div class="row">
                     <label for="dniID" class="form-label">DNI</label>
-                    <input type="text" name="dni" value="<?php echo $usuarios[$posicion]["dni"];?>" class="form-control" id="dniID"
+                    <input type="text" name="dni" value="<?php echo $usuario[0]["DNI"];?>" class="form-control" id="dniID"
                     placeholder="Introduzca su DNI completo" >
                     <span class="text-danger"> <?php echo $dniErr ?> </span>
                 </div>
@@ -107,16 +116,19 @@ foreach($usuarios as $key => $userrun){
             <div class="row">
                 <div class="mb-3 col-sm-6 p-0">
                     <label for="passwordID" class="form-label">Password</label>
-                    <input type="password" name="password" value="<?php echo $usuarios[$posicion]["password"];?>" class="form-control"
+                    <input type="password" name="password" value="<?php echo $usuario[0]["passwordW"];?>" class="form-control"
                     id="passwordID" placeholder="Su password">
                     <span class="text-danger"> <?php echo $passwordErr ?> </span>
                 </div>
             </div>
         <br>
-        <button type="submit" class="btn btn-success">Enviar</button>
+         <!--//UD5.6 RA6.f  5.6.d El boton de enviar el formulario solo está activo si el usuario es admin.   -->
+        <?php if(get_user_logged_in()){ ?>
+        <button type="submit" class="btn btn-success">Enviar</button> <?php }; ?>
         </form>
 
     </div>
 
 </div>
-<?php include("templates/footer.php"); ?>
+<?php include("templates/footer.php"); 
+close_connection($conn);?>
