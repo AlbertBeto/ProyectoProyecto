@@ -1,5 +1,5 @@
 <?php include("templates/header.php");
-include_once("datos.php");
+include_once("mysql/proyecto_sql.php");
 ?>
 
 <?php
@@ -64,30 +64,25 @@ include_once("datos.php");
             "titulo" => $titulo,
             "descripcion" => $descripcionProyecto,
             "imagen" => $pathArchivo,
-            "categorias" => [],
+            "categorias" => $categorias,
             "fecha" => $fechaproyect,
             ];
 
-            // UD4.2 RA3.e 4.2.e En esta zona cogemos el json lo desplegamos, añadimos y  lo guardamos. 
-                //Aqui cargamos el json del archivo en un array temporal .
-            $leoproyectos = json_decode(file_get_contents('mysql/proyecto1.json'),true);
-                //Si el json está vacio inicializamos un array vacio.
-            if($leoproyectos === NULL){
-                $leoproyectos = [];
-            };
-                //Aqui incluye en el array el nuevo proyecto
-            array_push($leoproyectos, $neoProyecto);
-                //metemos en un array y lo codificamos en json
-            $proyectos_json = json_encode($leoproyectos);
-                //Aqui guarda el nuevo array otra vez en el archivo
-            file_put_contents('mysql/proyecto1.json', $proyectos_json);
+            //UD5.5 5.5.b RA6.e Aqui tras confirmar que no hay errores recogemos la info de todos los inputs
+            // Y que se ha lanzado el formulario llamamos a la función que inserta el nuevo proyecto en la tabla proyecto
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                new_proyecto($conn,$neoProyecto);
+                //Aquí recojo el último id creado para pasarlo en la url
+                $ultimo_id=$conn->lastInsertId();
+            }
+            
             
             ?>
                 <!-- Ahora sale del minibucle del php realiza el salto de web a la pagina
                 de confirmación y acaba de cerrarlo todo.   -->
         <script type="text/javascript">
-         // UD4.2 RA3.e 4.2.f damos valor a id en la url usando la clave
-        window.location = "/confirma_proyecto.php?id=<?php echo $clave ?>";
+         // //UD5.5 5.5.b RA6.e damos valor a id en la url usando la ultima id.
+        window.location = "/confirma_proyecto.php?id=<?php echo $ultimo_id ?>";
         console.log($proyectos)
         </script>
    
@@ -132,6 +127,19 @@ include_once("datos.php");
 </textarea>
 <span class="text-danger"> <?php echo $descripcionProyectoErr ?> </span>
 </div>
+
+<!-- //UD5.4 5.4.c RA6.d Creo el seleccionador multiple que se guardara en categorias[]  -->
+<div class="row mb-4">
+    <p>Seleccione las categorias del proyecto:</p>
+    <select name='categorias[]' multiple size=5>
+        <option value=1 >PHP</option>
+        <option value=2 >Python</option>
+        <option value=3 >Docker</option>
+        <option value=4 >MySQL</option>
+        <option value=5 >JavaScript</option>
+    </select>
+</div>
+
 
 <!-- Esto es la parte del archivo para subir  -->
 <div class="row mb-4">

@@ -82,4 +82,21 @@ function get_proyectos_por_categoria_ordenado($conn, $cat, $param){
     return $consulta->fetchAll();
 }
 
+//UD5.5 5.5.b RA6.e Esta es la funcion para crear proyectos en la tabla proyectos.
+function new_proyecto($conn,$neoProyecto){
+
+        $clave = $neoProyecto["clave"];
+        $titulo = $neoProyecto["titulo"];
+        $descripcionProyecto = $neoProyecto["descripcion"];
+        $pathArchivo = $neoProyecto["imagen"];
+        $fechaproyect = $neoProyecto["fecha"];
+    //Aqui monto el query diciendole qué y donde tiene que meter los datos en la tabla proyecto. 
+    $nuevo_proyecto = "INSERT INTO proyecto (clave, titulo, fecha, descripcion, imagen) VALUES ('$clave', '$titulo', '$fechaproyect', '$descripcionProyecto', '$pathArchivo')";
+    $consulta = $conn->prepare($nuevo_proyecto);
+    $isOK = $consulta->execute();
+    $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
+    
+
+}
+
 ?>

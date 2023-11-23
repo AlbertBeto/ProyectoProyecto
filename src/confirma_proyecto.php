@@ -4,9 +4,9 @@
 Ha creado o modificado satisfactoriamente el nuevo proyecto.
 </div>
 <div>
-    <!-- UD4.2 RA3.e 4.2.f Cogemos el id de la dirección para cargar la ficha del proyecto -->
-<a class="btn btn-xs btn-info float-right" href="proyecto.php?id=<?php echo ($_GET["id"]) ?>">
-Volver al inicio
+    <!-- //UD5.5 5.5.b RA6.e Cogemos el id de la url para cargar la web de modificación de proyecto -->
+<a class="btn btn-xs btn-info float-right" href="formulario_mod_proyecto.php?id=<?php echo ($_GET["id"]) ?>">
+Ir a proyecto
 </a>
 </div>
 </div>

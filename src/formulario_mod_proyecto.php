@@ -78,12 +78,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "fecha" => $fechaproyect
         ];
 
-        // UD4.2 RA3.e 4.2.e Esta es la zona en un principio guardariamos el array modifficado pero no funciona. 
-/*
-        if ($posicion !== "") {
-            $posicion = $neoproyecto;
-        }
-*/
 ?>
         <!-- Ahora sale del minibucle del php realiza el salto de web a la pagina
                 de confirmación y acaba de cerrarlo todo.   -->
@@ -154,10 +148,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     };
                 
                 ?>
-
-
-
-
             </div>
 
             <!-- Esto es la parte del archivo para subir  -->

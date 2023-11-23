@@ -1,7 +1,9 @@
 <?php include_once("templates/header.php");?>
 <?php include_once("mysql/db_credenciales.php"); ?>
 <?php include_once("mysql/proyecto_sql.php"); ?>
-<?php //include_once("mysql/categoria_sql.php"); ?>
+<?php include_once("utiles.php");
+include_once ("mysql/usuario_sql.php"); ?>
+
 <?php //UD5.2 5.2.1 RA6.b doy acceso a la web con las funciones para conectar y desconectar la BD pero las cargo en header.
 //include_once("mysql/db_access.php");
 
@@ -25,8 +27,8 @@ if(is_null($categoria_id) & is_null($order_set)) {$proyectosTry =get_proyectos_a
 ?>
 
 <div>
-    <!--UD4 4.2.a RA3.e  Creo un boton en index que lleve a la página formulario_proyectos-->  
-    <?php  if (isset($_COOKIE["user_email"])) { ?>  
+    <!--UD5.5 5.5.b RA6.e Usando get_user_logged_in solo aparece el boton de crear proyectos para los admin. -->  
+    <?php  if (get_user_logged_in()) { ?>  
 <button onclick="location.href='formulario_proyectos.php'" type="button">
          Crear proyecto</button>
          <?php } ?>

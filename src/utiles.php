@@ -1,6 +1,7 @@
 <?php 
 include_once ("mysql/usuario_sql.php");
 include_once("mysql/db_access.php");
+include_once("mysql/sesion_sql.php");
 
 
 //Cambio la posición de a por b para que lo ordene de menor a mayor
