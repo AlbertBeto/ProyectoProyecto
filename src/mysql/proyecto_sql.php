@@ -107,7 +107,7 @@ function update_proyecto($conn,$neoProyecto){
         $id = $neoProyecto["id"];
     
     //Escribo el query para modificar los campos de la tabla usuario usando los datos del nuevo usuario. 
-    $update_proyecto = "UPDATE usuario SET clave='$clave', titulo='$titulo', fecha='$fechaproyect', descripcion='$descripcionProyecto' WHERE id=$id";
+    $update_proyecto = "UPDATE proyecto SET clave='$clave', titulo='$titulo', fecha='$fechaproyect', descripcion='$descripcionProyecto' WHERE id=$id";
     $consulta = $conn->prepare($update_proyecto);
     $isOK = $consulta->execute();
     $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);

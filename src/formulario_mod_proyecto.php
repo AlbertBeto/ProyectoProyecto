@@ -1,21 +1,19 @@
-<?php include("templates/header.php");
+<?php 
+include_once ("utiles.php");
 include_once("mysql/proyecto_sql.php");
 include_once("mysql/categoria_sql.php");
+include_once("mysql/db_access.php");
 ?>
 
 <?php
-$conn = open_connection();
+
 //importante inicializar todas las variables a vacio. 
 $claveErr = $tituloErr = $fechaproyectErr = $descripcionProyectoErr = $archivoProyectoErr = "";
 $clave = $titulo = $fechaproyect = $descripcionProyecto = "";
 $pathArchivo = $nombreArchivo = "";
 $posicion = "";
 
-if (isset($_COOKIE["user_email"])) {
-    $proyectop = $_GET["id"];
-    $posicion = get_proyecto_detail($conn, $proyectop);
-    $categorias_proyecto = get_categorias_por_proyecto($conn, $proyectop);
-}
+$conn = open_connection();
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -69,13 +67,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $neoproyecto = [
             
-            "id" => $_GET["id"],
+            "id" => $proyectop,
             "clave" => $clave,
             "titulo" => $titulo,
             "descripcion" => $descripcionProyecto,
             "imagen" => $pathArchivo,
-            "categorias" => [],
-            "fecha" => $fechaproyect
+            "fecha" => $fechaproyect,
         ];
 
             //NO FUNCIONA
@@ -83,20 +80,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Y que se ha lanzado el formulario llamamos a la función que inserta el nuevo proyecto en la tabla proyecto
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 update_proyecto($conn,$neoproyecto);
-                //Aquí recojo el último id creado para pasarlo en la url
-                $el_id=$_GET["id"];
+                
+                
             }
 
 ?>
         <!-- Ahora sale del minibucle del php realiza el salto de web a la pagina
                 de confirmación y acaba de cerrarlo todo.   -->
-        <script type="text/javascript">
+                <script type="text/javascript">
             // UD4.2 RA3.e 4.2.f damos valor a id en la url usando la clave
-            window.location = "/confirma_proyecto.php?id=<?php echo $el_id ?>";
+            window.location = "/confirma_proyecto.php?id=<?php echo $proyectop ?>";
         </script>
 <?php
     }
 }
+
+
+if (isset($_COOKIE["user_email"])) {
+    $proyectop = $_GET["id"];
+    $posicion = get_proyecto_detail($conn, $proyectop);
+    $categorias_proyecto = get_categorias_por_proyecto($conn, $proyectop);
+}
+
+include("templates/header.php");
 ?>
 <div class="container">
     <h2 class="mb-5">Formulario Proyectos</h2>
@@ -173,6 +179,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </div>
 
-<?php include("templates/footer.php");
+<?php
+echo($neoproyecto["clave"]);
+include("templates/footer.php");
 close_connection($conn);
 ?>
