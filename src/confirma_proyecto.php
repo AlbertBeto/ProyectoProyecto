@@ -1,7 +1,7 @@
 <?php include("templates/header.php"); ?>
 <div class="container">
 <div class="alert alert-success mt-5">
-Ha creado o modificado satisfactoriamente el nuevo proyecto.
+Ha creado o modificado satisfactoriamente el proyecto.
 </div>
 <div>
     <!-- //UD5.5 5.5.b RA6.e Cogemos el id de la url para cargar la web de modificación de proyecto -->

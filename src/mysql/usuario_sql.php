@@ -39,7 +39,7 @@ function get_id_usuario($conn, $email){
     return $consulta->fetchColumn();
 }
 
-///UD5.6 5.6.f RA6.f Creo función para modificar los campos de la tabla usuario 
+///UD5.6 5.6.d RA6.f Creo función para modificar los campos de la tabla usuario 
 function update_usuario($conn,$neoUsuario){
     //Para evitar errores paso los datos del usuario a variables internas de la función.     
     $email = $neoUsuario['email'];

@@ -13,8 +13,6 @@ $posicion = "";
 
 if (isset($_COOKIE["user_email"])) {
     $proyectop = $_GET["id"];
-
-
     $posicion = get_proyecto_detail($conn, $proyectop);
     $categorias_proyecto = get_categorias_por_proyecto($conn, $proyectop);
 }
@@ -68,8 +66,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //para luego crear un array con los valores de los formularios en el orden del array
 
     if ($claveErr === "" && $tituloErr === "" && $fechaproyectErr === "" && $descripcionProyectoErr === "") {
-
+        
         $neoproyecto = [
+            
+            "id" => $_GET["id"],
             "clave" => $clave,
             "titulo" => $titulo,
             "descripcion" => $descripcionProyecto,
@@ -78,13 +78,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "fecha" => $fechaproyect
         ];
 
+            //NO FUNCIONA
+            //UD5.6 5.6.c RA6.e Aqui tras confirmar que no hay errores recogemos la info de todos los inputs
+            // Y que se ha lanzado el formulario llamamos a la función que inserta el nuevo proyecto en la tabla proyecto
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                update_proyecto($conn,$neoproyecto);
+                //Aquí recojo el último id creado para pasarlo en la url
+                $el_id=$_GET["id"];
+            }
+
 ?>
         <!-- Ahora sale del minibucle del php realiza el salto de web a la pagina
                 de confirmación y acaba de cerrarlo todo.   -->
         <script type="text/javascript">
             // UD4.2 RA3.e 4.2.f damos valor a id en la url usando la clave
-            window.location = "/confirma_proyecto.php?id=<?php echo $proyectop ?>";
-            console.log($proyectos)
+            window.location = "/confirma_proyecto.php?id=<?php echo $el_id ?>";
         </script>
 <?php
     }
