@@ -3,16 +3,13 @@ include_once ("utiles.php");
 include_once("mysql/proyecto_sql.php");
 include_once("mysql/categoria_sql.php");
 include_once("mysql/db_access.php");
-?>
-
-<?php
 
 //importante inicializar todas las variables a vacio. 
 $claveErr = $tituloErr = $fechaproyectErr = $descripcionProyectoErr = $archivoProyectoErr = "";
 $clave = $titulo = $fechaproyect = $descripcionProyecto = "";
 $pathArchivo = $nombreArchivo = "";
 $posicion = "";
-
+$proyectop2 = $_GET["id"];
 $conn = open_connection();
 
 
@@ -67,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $neoproyecto = [
             
-            "id" => $proyectop,
+            "id" => $proyectop2,
             "clave" => $clave,
             "titulo" => $titulo,
             "descripcion" => $descripcionProyecto,
@@ -75,40 +72,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "fecha" => $fechaproyect,
         ];
 
-            //NO FUNCIONA
+            
             //UD5.6 5.6.c RA6.e Aqui tras confirmar que no hay errores recogemos la info de todos los inputs
             // Y que se ha lanzado el formulario llamamos a la función que inserta el nuevo proyecto en la tabla proyecto
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            
                 update_proyecto($conn,$neoproyecto);
-                
-                
-            }
+                //Utilizo un header de php ya que he tenido muchos problemas con el script y los parametros.  
+                header("Location: /confirma_proyecto.php?id=" . $proyectop2);
+                exit();
 
-?>
-        <!-- Ahora sale del minibucle del php realiza el salto de web a la pagina
-                de confirmación y acaba de cerrarlo todo.   -->
-                <script type="text/javascript">
-            // UD4.2 RA3.e 4.2.f damos valor a id en la url usando la clave
-            window.location = "/confirma_proyecto.php?id=<?php echo $proyectop ?>";
-        </script>
-<?php
     }
 }
-
 
 if (isset($_COOKIE["user_email"])) {
     $proyectop = $_GET["id"];
     $posicion = get_proyecto_detail($conn, $proyectop);
     $categorias_proyecto = get_categorias_por_proyecto($conn, $proyectop);
 }
-
 include("templates/header.php");
 ?>
 <div class="container">
     <h2 class="mb-5">Formulario Proyectos</h2>
     <div class="row">
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?id=<?php echo $proyectop; ?>" method="POST" enctype="multipart/form-data">
             <div class="mb-3 col-sm-6 p-0">
                 <div class="row">
                     <label for="claveID" class="form-label">Clave</label>
@@ -180,7 +167,6 @@ include("templates/header.php");
 </div>
 
 <?php
-echo($neoproyecto["clave"]);
 include("templates/footer.php");
 close_connection($conn);
 ?>

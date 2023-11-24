@@ -1,8 +1,5 @@
 <?php include_once("db_access.php");
 
-?>
-
-<?php
 function get_proyectos_all($conn){
     $proyecto_select_all = "SELECT * FROM proyecto";
     $consulta = $conn->prepare($proyecto_select_all);
@@ -97,21 +94,33 @@ function new_proyecto($conn,$neoProyecto){
 }
 
 //UD5.6 5.6.c RA6.f Creo función para modificar los campos de la tabla proyecto 
-function update_proyecto($conn,$neoProyecto){
+function update_proyecto($conn, $neoProyecto){
     //Para evitar errores paso los datos del usuario a variables internas de la función.     
-        $clave = $neoProyecto["clave"];
-        $titulo = $neoProyecto["titulo"];
-        $descripcionProyecto = $neoProyecto["descripcion"];
-        $pathArchivo = $neoProyecto["imagen"];
-        $fechaproyect = $neoProyecto["fecha"]; 
-        $id = $neoProyecto["id"];
+    $clave = $neoProyecto["clave"];
+    $titulo = $neoProyecto["titulo"];
+    $descripcionProyecto = $neoProyecto["descripcion"];
+    $pathArchivo = $neoProyecto["imagen"];
+    $fechaproyect = $neoProyecto["fecha"];
+    $id_old = $neoProyecto["id"];
+
     
     //Escribo el query para modificar los campos de la tabla usuario usando los datos del nuevo usuario. 
-    $update_proyecto = "UPDATE proyecto SET clave='$clave', titulo='$titulo', fecha='$fechaproyect', descripcion='$descripcionProyecto' WHERE id=$id";
+    $update_proyecto = "UPDATE proyecto SET clave=:clave, titulo=:titulo, fecha=:fechaproyect, descripcion=:descripcionProyecto, imagen=:pathArchivo WHERE id=:id_old";
     $consulta = $conn->prepare($update_proyecto);
+
+    $consulta->bindParam(':clave', $clave);
+    $consulta->bindParam(':titulo', $titulo);
+    $consulta->bindParam(':fechaproyect', $fechaproyect);
+    $consulta->bindParam(':descripcionProyecto', $descripcionProyecto);
+    $consulta->bindParam(':pathArchivo', $pathArchivo);
+    $consulta->bindParam(':id_old', $id_old);
+    
+
     $isOK = $consulta->execute();
     $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
-    
+
+
+
 }
 
 ?>
