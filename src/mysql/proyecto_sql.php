@@ -114,7 +114,6 @@ function update_proyecto($conn, $neoProyecto){
     $consulta->bindParam(':descripcionProyecto', $descripcionProyecto);
     $consulta->bindParam(':pathArchivo', $pathArchivo);
     $consulta->bindParam(':id_old', $id_old);
-    
 
     $isOK = $consulta->execute();
     $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
