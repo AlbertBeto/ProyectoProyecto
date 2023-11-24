@@ -83,6 +83,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+//UD5.6 5.6.b RA6.f Fuera del primer request method creo el segundo con el añadido que tiene que haber un $_POST de nombre borrar_proyecto
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['borrar_proyecto'])) {
+    //Guardo en variable el valor del post.
+    $proyecto_id = $_POST['proyecto_id'];
+    //Llamo a la variable borrar proyecto y le paso el id a borrar con la variable anterior. 
+        delete_proyecto($conn, $proyecto_id);
+    // Despues de implementar la variable cargo la página index con parametro de borrado. 
+    header("Location: index.php?borrado=true");
+    exit();
+}
+
 if (isset($_COOKIE["user_email"])) {
     $proyectop = $_GET["id"];
     $posicion = get_proyecto_detail($conn, $proyectop);
@@ -167,8 +178,13 @@ include("templates/header.php");
 <div>
     <!--UD5.6 5.6.b RA6.f Usando get_user_logged_in solo aparece el boton de borrar proyectos para los admin. -->
     <?php if (get_user_logged_in()) { ?>
-        <button onclick="delete_proyecto($conn, $proyectop)" type="button">
-            Borrar proyecto NO FUNCIONA</button>
+        <!--UD5.6 5.6.b RA6.f Aquí especifico que cuando submieto el formulario sea sobre si mismo y que se lleve la id y que sea en metodo post.  -->
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?id=<?php echo $proyectop; ?>" method="POST">
+        <!--UD5.6 5.6.b RA6.f En el input le doy valor a proyecto_id con la variable $proyectop -->
+            <input type="hidden" name="proyecto_id" value="<?php echo $proyectop; ?>">
+            <!--UD5.6 5.6.b RA6.f Envio todo el formulario con con el nombre borrar_proyecto -->
+            <button type="submit" name="borrar_proyecto">Borrar proyecto</button>
+        </form>
     <?php } ?>
 </div>
 

@@ -125,5 +125,8 @@ function delete_proyecto($conn, $id_borrar){
     $consulta = $conn->prepare($borra_proyecto);
     $isOK = $consulta->execute();
     $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
+    //Al acabar el contacto con la base de datos cierro la conexion y cargo la página index.php con un parametro de borrado True. 
+    close_connection($conn);
+    header("Location: index.php?borrado=true");
 }
 ?>
