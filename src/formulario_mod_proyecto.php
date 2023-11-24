@@ -1,5 +1,5 @@
-<?php 
-include_once ("utiles.php");
+<?php
+include_once("utiles.php");
 include_once("mysql/proyecto_sql.php");
 include_once("mysql/categoria_sql.php");
 include_once("mysql/db_access.php");
@@ -61,9 +61,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //para luego crear un array con los valores de los formularios en el orden del array
 
     if ($claveErr === "" && $tituloErr === "" && $fechaproyectErr === "" && $descripcionProyectoErr === "") {
-        
+
         $neoproyecto = [
-            
+
             "id" => $proyectop2,
             "clave" => $clave,
             "titulo" => $titulo,
@@ -72,15 +72,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "fecha" => $fechaproyect,
         ];
 
-            
-            //UD5.6 5.6.c RA6.e Aqui tras confirmar que no hay errores recogemos la info de todos los inputs
-            // Y que se ha lanzado el formulario llamamos a la función que inserta el nuevo proyecto en la tabla proyecto
-            
-                update_proyecto($conn,$neoproyecto);
-                //Utilizo un header de php ya que he tenido muchos problemas con el script y los parametros.  
-                header("Location: /confirma_proyecto.php?id=" . $proyectop2);
-                exit();
 
+        //UD5.6 5.6.c RA6.e Aqui tras confirmar que no hay errores recogemos la info de todos los inputs
+        // Y que se ha lanzado el formulario llamamos a la función que inserta el nuevo proyecto en la tabla proyecto
+
+        update_proyecto($conn, $neoproyecto);
+        //Utilizo un header de php ya que he tenido muchos problemas con el script y los parametros.  
+        header("Location: /confirma_proyecto.php?id=" . $proyectop2);
+        exit();
     }
 }
 
@@ -95,7 +94,7 @@ include("templates/header.php");
     <h2 class="mb-5">Formulario Proyectos</h2>
     <div class="row">
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?id=<?php echo $proyectop; ?>" method="POST" enctype="multipart/form-data">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?id=<?php echo $proyectop; ?>" method="POST" enctype="multipart/form-data">
             <div class="mb-3 col-sm-6 p-0">
                 <div class="row">
                     <label for="claveID" class="form-label">Clave</label>
@@ -128,26 +127,26 @@ include("templates/header.php");
             <div class="row mb-4">
                 <select name='categorias[]' multiple size=5>
                     <option value=1 <?php if (in_array('1', $categorias_proyecto)) echo 'selected'; ?>>PHP</option>
-                    <option value=2 <?php if (in_array('2',$categorias_proyecto)) echo 'selected'; ?>>Python</option>
+                    <option value=2 <?php if (in_array('2', $categorias_proyecto)) echo 'selected'; ?>>Python</option>
                     <option value=3 <?php if (in_array('3', $categorias_proyecto)) echo 'selected'; ?>>Docker</option>
                     <option value=4 <?php if (in_array('4', $categorias_proyecto)) echo 'selected'; ?>>MySQL</option>
                     <option value=5 <?php if (in_array('5', $categorias_proyecto)) echo 'selected'; ?>>JavaScript</option>
                 </select>
                 <?php
 
-                
+
                 //UD5.4 5.4.e RA6.d Aqui mostramos las categorias ya seleccionadas en el proyecto. 
-                        echo "Tiene previamente seleccionado:<br/>";
-                        // Comprueba si el array del proyecto está vacio. 
-                       if(!empty($categorias_proyecto)){
-                        //Recorre el array de categorias del proyecto e imprime el nombre de cada categoria. 
-                        foreach ($categorias_proyecto as $categoria) {
-                            echo "- Categoria: ".$categoria['nombre']."<br/>";
-                        }
-                    } else {
-                        echo "No tenia ninguna opción seleccionada";
-                    };
-                
+                echo "Tiene previamente seleccionado:<br/>";
+                // Comprueba si el array del proyecto está vacio. 
+                if (!empty($categorias_proyecto)) {
+                    //Recorre el array de categorias del proyecto e imprime el nombre de cada categoria. 
+                    foreach ($categorias_proyecto as $categoria) {
+                        echo "- Categoria: " . $categoria['nombre'] . "<br/>";
+                    }
+                } else {
+                    echo "No tenia ninguna opción seleccionada";
+                };
+
                 ?>
             </div>
 
@@ -164,6 +163,13 @@ include("templates/header.php");
             <button type="submit" class="btn btn-success">Enviar</button>
         </form>
     </div>
+</div>
+<div>
+    <!--UD5.6 5.6.b RA6.f Usando get_user_logged_in solo aparece el boton de borrar proyectos para los admin. -->
+    <?php if (get_user_logged_in()) { ?>
+        <button onclick="delete_proyecto($conn, $proyectop)" type="button">
+            Borrar proyecto NO FUNCIONA</button>
+    <?php } ?>
 </div>
 
 <?php

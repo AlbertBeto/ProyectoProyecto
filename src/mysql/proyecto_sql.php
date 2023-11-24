@@ -117,9 +117,13 @@ function update_proyecto($conn, $neoProyecto){
 
     $isOK = $consulta->execute();
     $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
-
-
-
 }
 
+//UD5.6 5.6.b RA6.f Creo función para modificar los campos de la tabla proyecto 
+function delete_proyecto($conn, $id_borrar){
+    $borra_proyecto = "DELETE FROM proyecto WHERE id = $id_borrar";
+    $consulta = $conn->prepare($borra_proyecto);
+    $isOK = $consulta->execute();
+    $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
+}
 ?>
